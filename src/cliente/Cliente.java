@@ -1,4 +1,3 @@
-
 package cliente;
 
 /**
@@ -127,7 +126,14 @@ public class Cliente {
                             String[] insertEmpleado = new String[20];
                             insertEmpleado = palabra.split(",");
 
-                            if (frase[5].equals("0") || frase[5].equals("1")) {
+                            if (!codigo.equals(frase[0]) || !codigo.equals(NomApellido[0])
+                                    || !codigo.equals(insertEmpresas[0]) || !codigo.equals(insertUsuarios[0])
+                                    || !codigo.equals(insertEmpleadoMailTelf[0]) || !codigo.equals(insertEmpleadoMT[0])
+                                    || !codigo.equals(insertEmpleado[0])) {
+
+                                System.out.println("El codigo es erroneo");
+
+                            } else if (frase[5].equals("0") || frase[5].equals("1")) {
                                 String codigoUserRecibido = frase[0]; //el codigo recibido tiene que ser el mismo que le hemos asignado
                                 String crud = frase[1];
                                 String nombreTabla = frase[2]; //Será el numero de tabla. (ej: 1->empleados 2->users 3-jornada 4-usertipe 5->empresa)
@@ -155,7 +161,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> listaPersonasdni = new ArrayList<>();
 
@@ -180,7 +187,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> listaTotalEmpleadosNomEmpresa = new ArrayList<>();
 
@@ -206,7 +214,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> listaTotalEmpleadosDepart = new ArrayList<>();
 
@@ -231,7 +240,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> listaTotalEmpleadosCodiCard = new ArrayList<>();
 
@@ -257,7 +267,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> listaTotalEmpleadosMail = new ArrayList<>();
 
@@ -282,7 +293,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> listaTotalEmpleadosTelf = new ArrayList<>();
 
@@ -309,7 +321,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Users> listaToUsersDni = new ArrayList<>();
 
@@ -330,7 +343,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Users> listaTotalUsersLogin = new ArrayList<>();
 
@@ -351,7 +365,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Users> listaTotalUsersTipe = new ArrayList<>();
 
@@ -374,7 +389,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empresa> listaEmpresasNom = new ArrayList<>();
 
@@ -395,7 +411,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empresa> listaEmpresasAddress = new ArrayList<>();
 
@@ -416,7 +433,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empresa> listaEmpresasTelepho = new ArrayList<>();
 
@@ -439,7 +457,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Jornada> listaToJornadaDni = new ArrayList<>();
 
@@ -464,7 +483,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Jornada> listaJornadaCodiCard = new ArrayList<>();
 
@@ -490,7 +510,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Jornada> listaTotalJornadaFecha = new ArrayList<>();
 
@@ -513,12 +534,13 @@ public class Cliente {
                                         perEnt.getObjectInputFilter();
                                     } else if (!nombreTabla.equals(null) && columna.equals("0")) {
                                         switch (nombreTabla) {
-                                            case "0" -> {
+                                            case "0":
                                                 //ahora si enviamos al server los datos que queremos, sin errores
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
                                                 escriptor.flush();
-                                                System.out.println("Le enviamos esto al server: " + palabra);
+                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                        + "\nenvia los datos siguiente: \n" + palabra);
 
                                                 List<Empleados> listaPersonas = new ArrayList<>();
 
@@ -538,15 +560,16 @@ public class Cliente {
                                                     System.out.println("____________________________________________________________________");
                                                 }
                                                 perEnt.getObjectInputFilter();
-                                            }
-                                            case "1" -> {
+                                                break;
+                                            case "1":
 
                                                 //ahora si enviamos al server los datos que queremos, sin errores
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
                                                 escriptor.flush();
 
-                                                System.out.println("Le enviamos esto al server: " + palabra);
+                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                        + "\nenvia los datos siguiente: \n" + palabra);
                                                 List<Users> listaUsers = new ArrayList<>();
 
                                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -563,15 +586,16 @@ public class Cliente {
                                                     System.out.println("____________________________________________________________________");
                                                 }
                                                 perEnt.getObjectInputFilter();
-                                            }
+                                                break;
 
-                                            case "2" -> {
+                                            case "2":
 
                                                 //ahora si enviamos al server los datos que queremos, sin errores
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
                                                 escriptor.flush();
-                                                System.out.println("Le enviamos esto al server: " + palabra);
+                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                        + "\nenvia los datos siguiente: \n" + palabra);
                                                 List<Empresa> listaEmpresa = new ArrayList<>();
                                                 perEnt = new ObjectInputStream(socket.getInputStream());
                                                 listaEmpresa = (ArrayList) perEnt.readObject();
@@ -584,14 +608,15 @@ public class Cliente {
                                                     System.out.println("____________________________________________________________________");
                                                 }
                                                 perEnt.getObjectInputFilter();
-                                            }
-                                            case "3" -> {
+                                                break;
+                                            case "3":
 
                                                 //ahora si enviamos al server los datos que queremos, sin errores
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
                                                 escriptor.flush();
-                                                System.out.println("Le enviamos esto al server: " + palabra);
+                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                        + "\nenvia los datos siguiente: \n" + palabra);
                                                 List<Jornada> listaJorandas = new ArrayList<>();
                                                 perEnt = new ObjectInputStream(socket.getInputStream());
                                                 listaJorandas = (ArrayList) perEnt.readObject();
@@ -610,7 +635,7 @@ public class Cliente {
                                                     System.out.println("____________________________________________________________________");
                                                 }
                                                 perEnt.getObjectInputFilter();
-                                            }
+                                                break;
                                         }
                                     }
                                 }
@@ -646,7 +671,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> listaEmpleadosNomApellido = new ArrayList<>();
 
@@ -674,7 +700,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Jornada> listaJornadaNomApellido = new ArrayList<>();
 
@@ -737,7 +764,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empresa> insertEmpresa = new ArrayList<>();
 
@@ -793,7 +821,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empresa> insertUser = new ArrayList<>();
 
@@ -859,7 +888,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> insertEmpleadosMailTelf = new ArrayList<>();
 
@@ -933,7 +963,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> insertEmpleadosMail = new ArrayList<>();
 
@@ -1008,7 +1039,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> insertEmpleadosTelf = new ArrayList<>();
 
@@ -1085,7 +1117,8 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("Le enviamos esto al server: " + palabra);
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
                                         List<Empleados> insertEmpleados = new ArrayList<>();
 
