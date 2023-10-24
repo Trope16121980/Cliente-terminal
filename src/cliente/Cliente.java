@@ -470,7 +470,7 @@ public class Cliente {
                                                 System.out.println("Dni: " + listaToJornadaDni.get(i).getDni() + "\n"
                                                         + "Nombre: " + listaToJornadaDni.get(i).getNom() + "\n"
                                                         + "Apellido: " + listaToJornadaDni.get(i).getApellido() + "\n"
-                                                        + "Código tarjeta: " + listaToJornadaDni.get(i).getCodicard() + "\n"
+                                                        + "Codigo tarjeta: " + listaToJornadaDni.get(i).getCodicard() + "\n"
                                                         + "Hora entrada: " + listaToJornadaDni.get(i).getHoraentrada() + "\n"
                                                         + "Hora salida: " + listaToJornadaDni.get(i).getHorasalida() + "\n"
                                                         + "Total: " + listaToJornadaDni.get(i).getTotal() + "\n"
@@ -497,7 +497,7 @@ public class Cliente {
                                                 System.out.println("Dni: " + listaJornadaCodiCard.get(i).getDni() + "\n"
                                                         + "Nombre: " + listaJornadaCodiCard.get(i).getNom() + "\n"
                                                         + "Apellido: " + listaJornadaCodiCard.get(i).getApellido() + "\n"
-                                                        + "Código tarjeta: " + listaJornadaCodiCard.get(i).getCodicard() + "\n"
+                                                        + "Codigo tarjeta: " + listaJornadaCodiCard.get(i).getCodicard() + "\n"
                                                         + "Hora entrada: " + listaJornadaCodiCard.get(i).getHoraentrada() + "\n"
                                                         + "Hora salida: " + listaJornadaCodiCard.get(i).getHorasalida() + "\n"
                                                         + "Total: " + listaJornadaCodiCard.get(i).getTotal() + "\n"
@@ -523,7 +523,7 @@ public class Cliente {
                                                 System.out.println("Dni: " + listaTotalJornadaFecha.get(i).getDni() + "\n"
                                                         + "Nombre: " + listaTotalJornadaFecha.get(i).getNom() + "\n"
                                                         + "Apellido: " + listaTotalJornadaFecha.get(i).getApellido() + "\n"
-                                                        + "Código tarjeta: " + listaTotalJornadaFecha.get(i).getCodicard() + "\n"
+                                                        + "Codigo tarjeta: " + listaTotalJornadaFecha.get(i).getCodicard() + "\n"
                                                         + "Hora entrada: " + listaTotalJornadaFecha.get(i).getHoraentrada() + "\n"
                                                         + "Hora salida: " + listaTotalJornadaFecha.get(i).getHorasalida() + "\n"
                                                         + "Total: " + listaTotalJornadaFecha.get(i).getTotal()
@@ -556,7 +556,7 @@ public class Cliente {
                                                             + "Departamento: " + listaPersonas.get(i).getDepartament() + "\n"
                                                             + "Codigo tarjeta: " + listaPersonas.get(i).getCodicard() + "\n"
                                                             + "Mail: " + listaPersonas.get(i).getMail() + "\n"
-                                                            + "Teléfono: " + listaPersonas.get(i).getTelephon() + "\n");
+                                                            + "Telefono: " + listaPersonas.get(i).getTelephon() + "\n");
                                                     System.out.println("____________________________________________________________________");
                                                 }
                                                 perEnt.getObjectInputFilter();
@@ -604,7 +604,7 @@ public class Cliente {
                                                 for (int i = 0; i < listaEmpresa.size(); i++) {
                                                     System.out.println("Nombre empresa: " + listaEmpresa.get(i).getNom() + "\n"
                                                             + "Dirección: " + listaEmpresa.get(i).getAddress() + "\n"
-                                                            + "Teléfono: " + listaEmpresa.get(i).getTelephon());
+                                                            + "Telefono: " + listaEmpresa.get(i).getTelephon());
                                                     System.out.println("____________________________________________________________________");
                                                 }
                                                 perEnt.getObjectInputFilter();
@@ -627,7 +627,7 @@ public class Cliente {
                                                     System.out.println("Dni: " + listaJorandas.get(i).getDni() + "\n"
                                                             + "Nombre: " + listaJorandas.get(i).getNom() + "\n"
                                                             + "Apellido: " + listaJorandas.get(i).getApellido() + "\n"
-                                                            + "Código tarjeta: " + listaJorandas.get(i).getCodicard() + "\n"
+                                                            + "Codigo tarjeta: " + listaJorandas.get(i).getCodicard() + "\n"
                                                             + "Hora entrada: " + listaJorandas.get(i).getHoraentrada() + "\n"
                                                             + "Hora salida: " + listaJorandas.get(i).getHorasalida() + "\n"
                                                             + "Total: " + listaJorandas.get(i).getTotal() + "\n"
@@ -691,7 +691,7 @@ public class Cliente {
                                                         + "Departamento: " + listaEmpleadosNomApellido.get(i).getDepartament() + "\n"
                                                         + "Codigo tarjeta: " + listaEmpleadosNomApellido.get(i).getCodicard() + "\n"
                                                         + "Mail: " + listaEmpleadosNomApellido.get(i).getMail() + "\n"
-                                                        + "Teléfono: " + listaEmpleadosNomApellido.get(i).getTelephon() + "\n");
+                                                        + "Telefono: " + listaEmpleadosNomApellido.get(i).getTelephon() + "\n");
                                                 System.out.println("____________________________________________________________________");
                                             }
                                         }
@@ -715,7 +715,7 @@ public class Cliente {
                                                 System.out.println("Dni: " + listaJornadaNomApellido.get(i).getDni() + "\n"
                                                         + "Nombre: " + listaJornadaNomApellido.get(i).getNom() + "\n"
                                                         + "Apellido: " + listaJornadaNomApellido.get(i).getApellido() + "\n"
-                                                        + "Código tarjeta: " + listaJornadaNomApellido.get(i).getCodicard() + "\n"
+                                                        + "Codigo tarjeta: " + listaJornadaNomApellido.get(i).getCodicard() + "\n"
                                                         + "Hora entrada: " + listaJornadaNomApellido.get(i).getHoraentrada() + "\n"
                                                         + "Hora salida: " + listaJornadaNomApellido.get(i).getHorasalida() + "\n"
                                                         + "Total: " + listaJornadaNomApellido.get(i).getTotal() + "\n"
@@ -774,7 +774,7 @@ public class Cliente {
                                         System.out.println(("Empleado creado correctamente, sus datos son: \n"));
                                         System.out.println("Nombre: " + datoNom + "\n"
                                                 + "Adrress: " + datoAddress + "\n"
-                                                + "Teléfono: " + datoTelephon + "\n");
+                                                + "Telefono: " + datoTelephon + "\n");
                                         System.out.println("____________________________________________________________________");
                                         perEnt.getObjectInputFilter();
                                     }
@@ -1132,7 +1132,7 @@ public class Cliente {
                                                 + "Departamento: " + datoDepartament + "\n"
                                                 + "Codigo tarjeta: " + datoCodicard + "\n"
                                                 + "Mail: " + datoMail + "\n"
-                                                + "Teléfono: " + datoTelephon + "\n");
+                                                + "Telefono: " + datoTelephon + "\n");
                                         System.out.println("____________________________________________________________________");
                                         perEnt.getObjectInputFilter();
                                     }
