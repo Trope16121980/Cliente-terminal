@@ -421,7 +421,8 @@ public class Cliente {
 												System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
 														+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
 														+ "\n" + "DNI: " + user.getDni());
-												System.out.println("____________________________________________________________________");
+												System.out.println(
+														"____________________________________________________________________");
 											}
 											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
@@ -441,15 +442,16 @@ public class Cliente {
 										Object receivedData = perEnt.readObject();
 
 										if (receivedData instanceof List) {
-										List<Users> listaTotalUsersLogin = (List<Users>) receivedData;
+											List<Users> listaTotalUsersLogin = (List<Users>) receivedData;
 
-										for (Users user : listaTotalUsersLogin) {
-											System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
-													+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
-													+ "\n" + "DNI: " + user.getDni());
-											System.out.println("____________________________________________________________________");
+											for (Users user : listaTotalUsersLogin) {
+												System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+														+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
+														+ "\n" + "DNI: " + user.getDni());
+												System.out.println(
+														"____________________________________________________________________");
 											}
-										perEnt.getObjectInputFilter();
+											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
 											String errorMessage = (String) receivedData;
 											System.out.println(errorMessage);
@@ -467,15 +469,16 @@ public class Cliente {
 										Object receivedData = perEnt.readObject();
 
 										if (receivedData instanceof List) {
-										List<Users> listaTotalUsersTipe = (List<Users>) receivedData;
+											List<Users> listaTotalUsersTipe = (List<Users>) receivedData;
 
-										for (Users user : listaTotalUsersTipe) {
-											System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
-													+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
-													+ "\n" + "DNI: " + user.getDni());
-											System.out.println("____________________________________________________________________");
+											for (Users user : listaTotalUsersTipe) {
+												System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+														+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
+														+ "\n" + "DNI: " + user.getDni());
+												System.out.println(
+														"____________________________________________________________________");
 											}
-										perEnt.getObjectInputFilter();
+											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
 											String errorMessage = (String) receivedData;
 											System.out.println(errorMessage);
@@ -489,24 +492,27 @@ public class Cliente {
 										System.out.println("El usuario con codigo: " + codigoUserRecibido
 												+ "\nenvia los datos siguiente: \n" + palabra);
 
-										List<Empresa> listaEmpresasNom = new ArrayList<>();
-
 										perEnt = new ObjectInputStream(socket.getInputStream());
-										listaEmpresasNom = (ArrayList) perEnt.readObject();
+										Object receivedData = perEnt.readObject();
 
-										for (int i = 0; i < listaEmpresasNom.size(); i++) {
-											if (columna.equals("nom")
-													&& palabraAbuscar.equals(listaEmpresasNom.get(i).getNom())) {
+										if (receivedData instanceof List) {
+											List<Empresa> listaEmpresasNom = (List<Empresa>) receivedData;
+											for (Empresa empresa : listaEmpresasNom) {
 												System.out.println(
 														"____________________________________________________________________");
-												System.out.println("Nombre empresa: " + listaEmpresasNom.get(i).getNom()
-														+ "\n" + "Direcci�n: " + listaEmpresasNom.get(i).getAddress()
-														+ "\n" + "Telefono: " + listaEmpresasNom.get(i).getTelephon());
+												System.out.println("Nombre empresa: " + empresa.getNom() + "\n"
+														+ "Direcci�n: " + empresa.getAddress() + "\n" + "Telefono: "
+														+ empresa.getTelephon());
 												System.out.println(
 														"____________________________________________________________________");
 											}
+											perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
 										}
-										perEnt.getObjectInputFilter();
 									} else if (nombreTabla.equals("2") && columna.equals("address")) {
 										escriptor.write(palabra);
 										escriptor.newLine();
@@ -514,25 +520,27 @@ public class Cliente {
 										System.out.println("El usuario con codigo: " + codigoUserRecibido
 												+ "\nenvia los datos siguiente: \n" + palabra);
 
-										List<Empresa> listaEmpresasAddress = new ArrayList<>();
-
 										perEnt = new ObjectInputStream(socket.getInputStream());
-										listaEmpresasAddress = (ArrayList) perEnt.readObject();
+										Object receivedData = perEnt.readObject();
 
-										for (int i = 0; i < listaEmpresasAddress.size(); i++) {
-											if (columna.equals("address") && palabraAbuscar
-													.equals(listaEmpresasAddress.get(i).getAddress())) {
+										if (receivedData instanceof List) {
+											List<Empresa> listaEmpresasAddress = (List<Empresa>) receivedData;
+											for (Empresa empresa : listaEmpresasAddress) {
 												System.out.println(
 														"____________________________________________________________________");
-												System.out.println("Nombre empresa: "
-														+ listaEmpresasAddress.get(i).getNom() + "\n" + "Direcci�n: "
-														+ listaEmpresasAddress.get(i).getAddress() + "\n" + "Telefono: "
-														+ listaEmpresasAddress.get(i).getTelephon());
+												System.out.println("Nombre empresa: " + empresa.getNom() + "\n"
+														+ "Direcci�n: " + empresa.getAddress() + "\n" + "Telefono: "
+														+ empresa.getTelephon());
 												System.out.println(
 														"____________________________________________________________________");
 											}
+											perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
 										}
-										perEnt.getObjectInputFilter();
 									} else if (nombreTabla.equals("2") && columna.equals("telephon")) {
 										escriptor.write(palabra);
 										escriptor.newLine();
@@ -540,25 +548,28 @@ public class Cliente {
 										System.out.println("El usuario con codigo: " + codigoUserRecibido
 												+ "\nenvia los datos siguiente: \n" + palabra);
 
-										List<Empresa> listaEmpresasTelepho = new ArrayList<>();
-
 										perEnt = new ObjectInputStream(socket.getInputStream());
-										listaEmpresasTelepho = (ArrayList) perEnt.readObject();
+										Object receivedData = perEnt.readObject();
 
-										for (int i = 0; i < listaEmpresasTelepho.size(); i++) {
-											String telephon = String.valueOf(listaEmpresasTelepho.get(i).getTelephon());
-											if (columna.equals("telephon") && palabraAbuscar.equals(telephon)) {
+										if (receivedData instanceof List) {
+											List<Empresa> listaEmpresasTelepho = (List<Empresa>) receivedData;
+											for (Empresa empresa : listaEmpresasTelepho) {
+												String telephon = String.valueOf(empresa.getTelephon());
 												System.out.println(
 														"____________________________________________________________________");
-												System.out.println("Nombre empresa: "
-														+ listaEmpresasTelepho.get(i).getNom() + "\n" + "Direcci�n: "
-														+ listaEmpresasTelepho.get(i).getAddress() + "\n" + "Telefono: "
-														+ listaEmpresasTelepho.get(i).getTelephon());
+												System.out.println("Nombre empresa: " + empresa.getNom() + "\n"
+														+ "Direccion: " + empresa.getAddress() + "\n" + "Telefono: "
+														+ empresa.getTelephon());
 												System.out.println(
 														"____________________________________________________________________");
 											}
+											perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
 										}
-										perEnt.getObjectInputFilter();
 
 									} else if (nombreTabla.equals("3") && columna.equals("dni")) {
 										escriptor.write(palabra);
