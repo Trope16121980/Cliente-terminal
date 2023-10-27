@@ -412,23 +412,24 @@ public class Cliente {
 										System.out.println("El usuario con codigo: " + codigoUserRecibido
 												+ "\nenvia los datos siguiente: \n" + palabra);
 
-										List<Users> listaToUsersDni = new ArrayList<>();
-
 										perEnt = new ObjectInputStream(socket.getInputStream());
-										listaToUsersDni = (ArrayList) perEnt.readObject();
+										Object receivedData = perEnt.readObject();
 
-										for (int i = 0; i < listaToUsersDni.size(); i++) {
-											if (columna.equals("dni")
-													&& palabraAbuscar.equals(listaToUsersDni.get(i).getDni())) {
-												System.out.println("Login: " + listaToUsersDni.get(i).getLogin() + "\n"
-														+ "Password: " + listaToUsersDni.get(i).getPass() + "\n"
-														+ "Tipo de user: " + listaToUsersDni.get(i).getNumtipe() + "\n"
-														+ "DNI: " + listaToUsersDni.get(i).getDni());
-												System.out.println(
-														"____________________________________________________________________");
+										if (receivedData instanceof List) {
+											List<Users> listaToUsersDni = (List<Users>) receivedData;
+											for (Users user : listaToUsersDni) {
+												System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+														+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
+														+ "\n" + "DNI: " + user.getDni());
+												System.out.println("____________________________________________________________________");
 											}
+											perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
 										}
-										perEnt.getObjectInputFilter();
 									} else if (nombreTabla.equals("1") && columna.equals("login")) {
 										escriptor.write(palabra);
 										escriptor.newLine();
@@ -436,24 +437,25 @@ public class Cliente {
 										System.out.println("El usuario con codigo: " + codigoUserRecibido
 												+ "\nenvia los datos siguiente: \n" + palabra);
 
-										List<Users> listaTotalUsersLogin = new ArrayList<>();
-
 										perEnt = new ObjectInputStream(socket.getInputStream());
-										listaTotalUsersLogin = (ArrayList) perEnt.readObject();
+										Object receivedData = perEnt.readObject();
 
-										for (int i = 0; i < listaTotalUsersLogin.size(); i++) {
-											if (columna.equals("login")
-													&& palabraAbuscar.equals(listaTotalUsersLogin.get(i).getLogin())) {
-												System.out.println("Login: " + listaTotalUsersLogin.get(i).getLogin()
-														+ "\n" + "Password: " + listaTotalUsersLogin.get(i).getPass()
-														+ "\n" + "Tipo de user: "
-														+ listaTotalUsersLogin.get(i).getNumtipe() + "\n" + "DNI: "
-														+ listaTotalUsersLogin.get(i).getDni());
-												System.out.println(
-														"____________________________________________________________________");
+										if (receivedData instanceof List) {
+										List<Users> listaTotalUsersLogin = (List<Users>) receivedData;
+
+										for (Users user : listaTotalUsersLogin) {
+											System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+													+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
+													+ "\n" + "DNI: " + user.getDni());
+											System.out.println("____________________________________________________________________");
 											}
-										}
 										perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
+										}
 									} else if (nombreTabla.equals("1") && columna.equals("numtipe")) {
 										escriptor.write(palabra);
 										escriptor.newLine();
@@ -461,25 +463,25 @@ public class Cliente {
 										System.out.println("El usuario con codigo: " + codigoUserRecibido
 												+ "\nenvia los datos siguiente: \n" + palabra);
 
-										List<Users> listaTotalUsersTipe = new ArrayList<>();
-
 										perEnt = new ObjectInputStream(socket.getInputStream());
-										listaTotalUsersTipe = (ArrayList) perEnt.readObject();
+										Object receivedData = perEnt.readObject();
 
-										for (int i = 0; i < listaTotalUsersTipe.size(); i++) {
-											String numtipe = String.valueOf(listaTotalUsersTipe.get(i).getNumtipe());
-											if (columna.equals("numtipe") && palabraAbuscar.equals(numtipe)) {
-												System.out.println("Login: " + listaTotalUsersTipe.get(i).getLogin()
-														+ "\n" + "Password: " + listaTotalUsersTipe.get(i).getPass()
-														+ "\n" + "Tipo de user: "
-														+ listaTotalUsersTipe.get(i).getNumtipe() + "\n" + "DNI: "
-														+ listaTotalUsersTipe.get(i).getDni());
-												System.out.println(
-														"____________________________________________________________________");
+										if (receivedData instanceof List) {
+										List<Users> listaTotalUsersTipe = (List<Users>) receivedData;
+
+										for (Users user : listaTotalUsersTipe) {
+											System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+													+ user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
+													+ "\n" + "DNI: " + user.getDni());
+											System.out.println("____________________________________________________________________");
 											}
-										}
 										perEnt.getObjectInputFilter();
-
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
+										}
 									} else if (nombreTabla.equals("2") && columna.equals("nom")) {
 										escriptor.write(palabra);
 										escriptor.newLine();
