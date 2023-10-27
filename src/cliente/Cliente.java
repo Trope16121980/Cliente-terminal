@@ -162,18 +162,79 @@ public class Cliente {
 										if (receivedData instanceof List) {
 											List<Empleados> listaPersonasdni = (List<Empleados>) receivedData;
 											for (Empleados empleado : listaPersonasdni) {
-												if (columna.equals("dni") && palabraAbuscar.equals(empleado.getDni())) {
-													System.out.println("DNI: " + empleado.getDni() + "\n" + "Nombre: "
-															+ empleado.getNom() + "\n" + "Apellido: "
-															+ empleado.getApellido() + "\n" + "Nombre empresa: "
-															+ empleado.getNomempresa() + "\n" + "Departamento: "
-															+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
-															+ empleado.getCodicard() + "\n" + "Mail: "
-															+ empleado.getMail() + "\n" + "Telefono: "
-															+ empleado.getTelephon() + "\n");
-													System.out.println(
-															"____________________________________________________________________");
-												}
+												System.out.println("DNI: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
+											}
+											perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
+										}
+
+									} else if (nombreTabla.equals("0") && columna.equals("nom")) {
+										escriptor.write(palabra);
+										escriptor.newLine();
+										escriptor.flush();
+										System.out.println("El usuario con codigo: " + codigoUserRecibido
+												+ "\nenvia los datos siguiente: \n" + palabra);
+
+										perEnt = new ObjectInputStream(socket.getInputStream());
+										Object receivedData = perEnt.readObject();
+
+										if (receivedData instanceof List) {
+											List<Empleados> listaTotalEmpleadosNom = (List<Empleados>) receivedData;
+
+											for (Empleados empleado : listaTotalEmpleadosNom) {
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
+											}
+											perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
+										}
+
+									} else if (nombreTabla.equals("0") && columna.equals("apellido")) {
+										escriptor.write(palabra);
+										escriptor.newLine();
+										escriptor.flush();
+										System.out.println("El usuario con codigo: " + codigoUserRecibido
+												+ "\nenvia los datos siguiente: \n" + palabra);
+
+										perEnt = new ObjectInputStream(socket.getInputStream());
+										Object receivedData = perEnt.readObject();
+
+										if (receivedData instanceof List) {
+											List<Empleados> listaTotalEmpleadosApellido = (List<Empleados>) receivedData;
+
+											for (Empleados empleado : listaTotalEmpleadosApellido) {
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
 											}
 											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
@@ -197,19 +258,15 @@ public class Cliente {
 											List<Empleados> listaTotalEmpleadosNomEmpresa = (List<Empleados>) receivedData;
 
 											for (Empleados empleado : listaTotalEmpleadosNomEmpresa) {
-												if (columna.equals("nomempresa")
-														&& palabraAbuscar.equals(empleado.getNomempresa())) {
-													System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
-															+ empleado.getNom() + "\n" + "Apellido: "
-															+ empleado.getApellido() + "\n" + "Nombre empresa: "
-															+ empleado.getNomempresa() + "\n" + "Departamento: "
-															+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
-															+ empleado.getCodicard() + "\n" + "Mail: "
-															+ empleado.getMail() + "\n" + "Telefono: "
-															+ empleado.getTelephon() + "\n");
-													System.out.println(
-															"____________________________________________________________________");
-												}
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
 											}
 											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
@@ -234,19 +291,15 @@ public class Cliente {
 											List<Empleados> listaTotalEmpleadosDepart = (List<Empleados>) receivedData;
 
 											for (Empleados empleado : listaTotalEmpleadosDepart) {
-												if (columna.equals("departament")
-														&& palabraAbuscar.equals(empleado.getDepartament())) {
-													System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
-															+ empleado.getNom() + "\n" + "Apellido: "
-															+ empleado.getApellido() + "\n" + "Nombre empresa: "
-															+ empleado.getNomempresa() + "\n" + "Departamento: "
-															+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
-															+ empleado.getCodicard() + "\n" + "Mail: "
-															+ empleado.getMail() + "\n" + "Telefono: "
-															+ empleado.getTelephon() + "\n");
-													System.out.println(
-															"____________________________________________________________________");
-												}
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
 											}
 											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
@@ -270,18 +323,15 @@ public class Cliente {
 											List<Empleados> listaTotalEmpleadosCodiCard = (List<Empleados>) receivedData;
 											for (Empleados empleado : listaTotalEmpleadosCodiCard) {
 												String codicard = String.valueOf(empleado.getCodicard());
-												if (columna.equals("codicard") && palabraAbuscar.equals(codicard)) {
-													System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
-															+ empleado.getNom() + "\n" + "Apellido: "
-															+ empleado.getApellido() + "\n" + "Nombre empresa: "
-															+ empleado.getNomempresa() + "\n" + "Departamento: "
-															+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
-															+ empleado.getCodicard() + "\n" + "Mail: "
-															+ empleado.getMail() + "\n" + "Telefono: "
-															+ empleado.getTelephon() + "\n");
-													System.out.println(
-															"____________________________________________________________________");
-												}
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
 											}
 											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
@@ -305,19 +355,15 @@ public class Cliente {
 											List<Empleados> listaTotalEmpleadosMail = (List<Empleados>) receivedData;
 
 											for (Empleados empleado : listaTotalEmpleadosMail) {
-												if (columna.equals("mail")
-														&& palabraAbuscar.equals(empleado.getMail())) {
-													System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
-															+ empleado.getNom() + "\n" + "Apellido: "
-															+ empleado.getApellido() + "\n" + "Nombre empresa: "
-															+ empleado.getNomempresa() + "\n" + "Departamento: "
-															+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
-															+ empleado.getCodicard() + "\n" + "Mail: "
-															+ empleado.getMail() + "\n" + "Telefono: "
-															+ empleado.getTelephon() + "\n");
-													System.out.println(
-															"____________________________________________________________________");
-												}
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
 											}
 											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
@@ -341,18 +387,15 @@ public class Cliente {
 											List<Empleados> listaTotalEmpleadosTelf = (List<Empleados>) receivedData;
 											for (Empleados empleado : listaTotalEmpleadosTelf) {
 												String telephon = String.valueOf(empleado.getTelephon());
-												if (columna.equals("telephon") && palabraAbuscar.equals(telephon)) {
-													System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
-															+ empleado.getNom() + "\n" + "Apellido: "
-															+ empleado.getApellido() + "\n" + "Nombre empresa: "
-															+ empleado.getNomempresa() + "\n" + "Departamento: "
-															+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
-															+ empleado.getCodicard() + "\n" + "Mail: "
-															+ empleado.getMail() + "\n" + "Telefono: "
-															+ empleado.getTelephon() + "\n");
-													System.out.println(
-															"____________________________________________________________________");
-												}
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
+												System.out.println(
+														"____________________________________________________________________");
 											}
 											perEnt.getObjectInputFilter();
 										} else if (receivedData instanceof String) {
@@ -683,8 +726,8 @@ public class Cliente {
 											// recibo objeto
 											for (int i = 0; i < listaEmpresa.size(); i++) {
 												System.out.println("Nombre empresa: " + listaEmpresa.get(i).getNom()
-														+ "\n" + "Direcci�n: " + listaEmpresa.get(i).getAddress() + "\n"
-														+ "Telefono: " + listaEmpresa.get(i).getTelephon());
+														+ "\n" + "Direcci�n: " + listaEmpresa.get(i).getAddress()
+														+ "\n" + "Telefono: " + listaEmpresa.get(i).getTelephon());
 												System.out.println(
 														"____________________________________________________________________");
 											}
@@ -723,19 +766,14 @@ public class Cliente {
 									}
 								}
 							} else if (NomApellido[7].equals("0") || NomApellido[7].equals("1")) {
-								String codigoUserRecibido = NomApellido[0]; // el codigo recibido tiene que ser el mismo
-																			// que le hemos asignado
+								String codigoUserRecibido = NomApellido[0];
 								String crud = NomApellido[1];
-								String nombreTabla = NomApellido[2]; // Ser� el numero de tabla. (ej: 1->empleados
-																		// 2->users 3-jornada 4-usertipe 5->empresa)
-								String nom = NomApellido[3]; // sera la palabra que busquemos(ej: juan,1234567D), si
-																// ponemos 0 sera todos los de la tabla
-								String datoNom = NomApellido[4];// si es el caso ser� la columna (,dni,nom,etc), si no
-																// hay ponemos 0
-								String apellido = NomApellido[5]; // sera la palabra que busquemos(ej: juan,1234567D),
-																	// si ponemos 0 sera todos los de la tabla
+								String nombreTabla = NomApellido[2];
+								String nom = NomApellido[3];
+								String datoNom = NomApellido[4];
+								String apellido = NomApellido[5];
 								String datoApellido = NomApellido[6];
-								String orden = NomApellido[7];// si es el caso el orden, si no hay ponemos 0
+								String orden = NomApellido[7];
 
 								System.out.println(
 										"____________________________________________________________________");
@@ -765,34 +803,30 @@ public class Cliente {
 										System.out.println("El usuario con codigo: " + codigoUserRecibido
 												+ "\nenvia los datos siguiente: \n" + palabra);
 
-										List<Empleados> listaEmpleadosNomApellido = new ArrayList<>();
-
 										perEnt = new ObjectInputStream(socket.getInputStream());
-										listaEmpleadosNomApellido = (ArrayList) perEnt.readObject();
+										Object receivedData = perEnt.readObject();
 
-										for (int i = 0; i < listaEmpleadosNomApellido.size(); i++) {
-											if (nom.equals("nom")
-													&& datoNom.equals(listaEmpleadosNomApellido.get(i).getNom())
-													&& apellido.equals("apellido") && datoApellido
-															.equals(listaEmpleadosNomApellido.get(i).getApellido())) {
-												System.out.println("Dni: " + listaEmpleadosNomApellido.get(i).getDni()
-														+ "\n" + "Nombre: " + listaEmpleadosNomApellido.get(i).getNom()
-														+ "\n" + "Apellido: "
-														+ listaEmpleadosNomApellido.get(i).getApellido() + "\n"
-														+ "Nombre empresa: "
-														+ listaEmpleadosNomApellido.get(i).getNomempresa() + "\n"
-														+ "Departamento: "
-														+ listaEmpleadosNomApellido.get(i).getDepartament() + "\n"
-														+ "Codigo tarjeta: "
-														+ listaEmpleadosNomApellido.get(i).getCodicard() + "\n"
-														+ "Mail: " + listaEmpleadosNomApellido.get(i).getMail() + "\n"
-														+ "Telefono: " + listaEmpleadosNomApellido.get(i).getTelephon()
-														+ "\n");
+										if (receivedData instanceof List) {
+											List<Empleados> listaEmpleadosNomApellido = (List<Empleados>) receivedData;
+											for (Empleados empleado : listaEmpleadosNomApellido) {
+												System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+														+ empleado.getNom() + "\n" + "Apellido: "
+														+ empleado.getApellido() + "\n" + "Nombre empresa: "
+														+ empleado.getNomempresa() + "\n" + "Departamento: "
+														+ empleado.getDepartament() + "\n" + "Codigo tarjeta: "
+														+ empleado.getCodicard() + "\n" + "Mail: " + empleado.getMail()
+														+ "\n" + "Telefono: " + empleado.getTelephon() + "\n");
 												System.out.println(
 														"____________________________________________________________________");
 											}
+											perEnt.getObjectInputFilter();
+										} else if (receivedData instanceof String) {
+											String errorMessage = (String) receivedData;
+											System.out.println(errorMessage);
+										} else {
+											System.out.println("Datos inesperados recibidos del servidor");
 										}
-										perEnt.getObjectInputFilter();
+
 									} else if (nombreTabla.equals("3") && nom.equals("nom")
 											&& apellido.equals("apellido")) {
 										escriptor.write(palabra);
@@ -830,21 +864,16 @@ public class Cliente {
 									}
 								}
 							} else if (insertEmpresas[9].equals("0") || insertEmpresas[9].equals("1")) {
-								String codigoUserRecibido = insertEmpresas[0]; // el codigo recibido tiene que ser el
-																				// mismo que le hemos asignado
+								String codigoUserRecibido = insertEmpresas[0];
 								String crud = insertEmpresas[1];
-								String nombreTabla = insertEmpresas[2]; // Ser� el numero de tabla. (ej: 1->empleados
-																		// 2->users 3-jornada 4-usertipe 5->empresa)
-								String nom = insertEmpresas[3]; // sera la palabra que busquemos(ej: juan,1234567D), si
-																// ponemos 0 sera todos los de la tabla
+								String nombreTabla = insertEmpresas[2];
+								String nom = insertEmpresas[3];
 								String datoNom = insertEmpresas[4];
 								String address = insertEmpresas[5];
 								String datoAddress = insertEmpresas[6];
-								String telephon = insertEmpresas[7]; // sera la palabra que busquemos(ej:
-																		// juan,1234567D), si ponemos 0 sera todos los
-																		// de la tabla
+								String telephon = insertEmpresas[7];
 								String datoTelephon = insertEmpresas[8];
-								String orden = insertEmpresas[9];// si es el caso el orden, si no hay ponemos 0
+								String orden = insertEmpresas[9];
 
 								System.out.println(
 										"____________________________________________________________________");
@@ -891,23 +920,18 @@ public class Cliente {
 									}
 								}
 							} else if (insertUsuarios[11].equals("0") || insertUsuarios[11].equals("1")) {
-								String codigoUserRecibido = insertUsuarios[0]; // el codigo recibido tiene que ser el
-																				// mismo que le hemos asignado
+								String codigoUserRecibido = insertUsuarios[0];
 								String crud = insertUsuarios[1];
-								String nombreTabla = insertUsuarios[2]; // Ser� el numero de tabla. (ej: 1->empleados
-																		// 2->users 3-jornada 4-usertipe 5->empresa)
-								String login = insertUsuarios[3]; // sera la palabra que busquemos(ej: juan,1234567D),
-																	// si ponemos 0 sera todos los de la tabla
+								String nombreTabla = insertUsuarios[2];
+								String login = insertUsuarios[3];
 								String datoLogin = insertUsuarios[4];
 								String pass = insertUsuarios[5];
 								String datoPass = insertUsuarios[6];
-								String numTipe = insertUsuarios[7]; // sera la palabra que busquemos(ej: juan,1234567D),
-																	// si ponemos 0 sera todos los de la tabla
+								String numTipe = insertUsuarios[7];
 								String datoNumTipe = insertUsuarios[8];
-								String dni = insertUsuarios[9]; // sera la palabra que busquemos(ej: juan,1234567D), si
-																// ponemos 0 sera todos los de la tabla
+								String dni = insertUsuarios[9];
 								String datoDni = insertUsuarios[10];
-								String orden = insertUsuarios[11];// si es el caso el orden, si no hay ponemos 0
+								String orden = insertUsuarios[11];
 
 								System.out.println(
 										"____________________________________________________________________");
@@ -957,41 +981,22 @@ public class Cliente {
 								}
 							} else if (insertEmpleadoMailTelf[15].equals("0")
 									|| insertEmpleadoMailTelf[15].equals("1")) {
-								String codigoUserRecibido = insertEmpleadoMailTelf[0]; // el codigo recibido tiene que
-																						// ser el mismo que le hemos
-																						// asignado
+								String codigoUserRecibido = insertEmpleadoMailTelf[0];
 								String crud = insertEmpleadoMailTelf[1];
-								String nombreTabla = insertEmpleadoMailTelf[2]; // Ser� el numero de tabla. (ej:
-																				// 1->empleados 2->users 3-jornada
-																				// 4-usertipe 5->empresa)
-								String dni = insertEmpleadoMailTelf[3]; // sera la palabra que busquemos(ej:
-																		// juan,1234567D), si ponemos 0 sera todos los
-																		// de la tabla
-								String datoDni = insertEmpleadoMailTelf[4];// si es el caso ser� la columna
-																			// (,dni,nom,etc), si no hay ponemos 0
-								String nom = insertEmpleadoMailTelf[5]; // sera la palabra que busquemos(ej:
-																		// juan,1234567D), si ponemos 0 sera todos los
-																		// de la tabla
+								String nombreTabla = insertEmpleadoMailTelf[2];
+								String dni = insertEmpleadoMailTelf[3];
+								String datoDni = insertEmpleadoMailTelf[4];
+								String nom = insertEmpleadoMailTelf[5];
 								String datoNom = insertEmpleadoMailTelf[6];
-								String apellido = insertEmpleadoMailTelf[7];// si es el caso el orden, si no hay ponemos
-																			// 0
-								String datoApellido = insertEmpleadoMailTelf[8]; // el codigo recibido tiene que ser el
-																					// mismo que le hemos asignado
+								String apellido = insertEmpleadoMailTelf[7];
+								String datoApellido = insertEmpleadoMailTelf[8];
 								String nomempresa = insertEmpleadoMailTelf[9];
-								String datoNomempresa = insertEmpleadoMailTelf[10]; // Ser� el numero de tabla. (ej:
-																					// 1->empleados 2->users 3-jornada
-																					// 4-usertipe 5->empresa)
-								String departament = insertEmpleadoMailTelf[11]; // sera la palabra que busquemos(ej:
-																					// juan,1234567D), si ponemos 0 sera
-																					// todos los de la tabla
-								String datoDepartament = insertEmpleadoMailTelf[12];// si es el caso ser� la columna
-																					// (,dni,nom,etc), si no hay ponemos
-																					// 0
-								String codicard = insertEmpleadoMailTelf[13]; // sera la palabra que busquemos(ej:
-																				// juan,1234567D), si ponemos 0 sera
-																				// todos los de la tabla
+								String datoNomempresa = insertEmpleadoMailTelf[10];
+								String departament = insertEmpleadoMailTelf[11];
+								String datoDepartament = insertEmpleadoMailTelf[12];
+								String codicard = insertEmpleadoMailTelf[13];
 								String datoCodicard = insertEmpleadoMailTelf[14];
-								String orden = insertEmpleadoMailTelf[15];// si es el caso el orden, si no hay ponemos 0
+								String orden = insertEmpleadoMailTelf[15];
 
 								System.out.println(
 										"____________________________________________________________________");
@@ -1049,37 +1054,24 @@ public class Cliente {
 							} else if (insertEmpleadoMT[17].equals("0") && insertEmpleadoMT[15].equals("mail")
 									|| insertEmpleadoMT[17].equals("1") && insertEmpleadoMT[15].equals("mail")) {
 
-								String codigoUserRecibido = insertEmpleadoMT[0]; // el codigo recibido tiene que ser el
-																					// mismo que le hemos asignado
+								String codigoUserRecibido = insertEmpleadoMT[0];
 								String crud = insertEmpleadoMT[1];
-								String nombreTabla = insertEmpleadoMT[2]; // Ser� el numero de tabla. (ej: 1->empleados
-																			// 2->users 3-jornada 4-usertipe 5->empresa)
-								String dni = insertEmpleadoMT[3]; // sera la palabra que busquemos(ej: juan,1234567D),
-																	// si ponemos 0 sera todos los de la tabla
-								String datoDni = insertEmpleadoMT[4];// si es el caso ser� la columna (,dni,nom,etc), si
-																		// no hay ponemos 0
-								String nom = insertEmpleadoMT[5]; // sera la palabra que busquemos(ej: juan,1234567D),
-																	// si ponemos 0 sera todos los de la tabla
+								String nombreTabla = insertEmpleadoMT[2];
+								String dni = insertEmpleadoMT[3];
+								String datoDni = insertEmpleadoMT[4];
+								String nom = insertEmpleadoMT[5];
 								String datoNom = insertEmpleadoMT[6];
-								String apellido = insertEmpleadoMT[7];// si es el caso el orden, si no hay ponemos 0
-								String datoApellido = insertEmpleadoMT[8]; // el codigo recibido tiene que ser el mismo
-																			// que le hemos asignado
+								String apellido = insertEmpleadoMT[7];
+								String datoApellido = insertEmpleadoMT[8];
 								String nomempresa = insertEmpleadoMT[9];
-								String datoNomempresa = insertEmpleadoMT[10]; // Ser� el numero de tabla. (ej:
-																				// 1->empleados 2->users 3-jornada
-																				// 4-usertipe 5->empresa)
-								String departament = insertEmpleadoMT[11]; // sera la palabra que busquemos(ej:
-																			// juan,1234567D), si ponemos 0 sera todos
-																			// los de la tabla
-								String datoDepartament = insertEmpleadoMT[12];// si es el caso ser� la columna
-																				// (,dni,nom,etc), si no hay ponemos 0
-								String codicard = insertEmpleadoMT[13]; // sera la palabra que busquemos(ej:
-																		// juan,1234567D), si ponemos 0 sera todos los
-																		// de la tabla
+								String datoNomempresa = insertEmpleadoMT[10];
+								String departament = insertEmpleadoMT[11];
+								String datoDepartament = insertEmpleadoMT[12];
+								String codicard = insertEmpleadoMT[13];
 								String datoCodicard = insertEmpleadoMT[14];
-								String mail = insertEmpleadoMT[15];// si es el caso el orden, si no hay ponemos 0
+								String mail = insertEmpleadoMT[15];
 								String datoMail = insertEmpleadoMT[16];
-								String orden = insertEmpleadoMT[17];// si es el caso el orden, si no hay ponemos 0
+								String orden = insertEmpleadoMT[17];
 
 								System.out.println(
 										"____________________________________________________________________");
@@ -1140,37 +1132,24 @@ public class Cliente {
 							} else if (insertEmpleadoMT[17].equals("0") && insertEmpleadoMT[15].equals("telephon")
 									|| insertEmpleadoMT[17].equals("1") && insertEmpleadoMT[15].equals("telephon")) {
 
-								String codigoUserRecibido = insertEmpleadoMT[0]; // el codigo recibido tiene que ser el
-																					// mismo que le hemos asignado
+								String codigoUserRecibido = insertEmpleadoMT[0];
 								String crud = insertEmpleadoMT[1];
-								String nombreTabla = insertEmpleadoMT[2]; // Ser� el numero de tabla. (ej: 1->empleados
-																			// 2->users 3-jornada 4-usertipe 5->empresa)
-								String dni = insertEmpleadoMT[3]; // sera la palabra que busquemos(ej: juan,1234567D),
-																	// si ponemos 0 sera todos los de la tabla
-								String datoDni = insertEmpleadoMT[4];// si es el caso ser� la columna (,dni,nom,etc), si
-																		// no hay ponemos 0
-								String nom = insertEmpleadoMT[5]; // sera la palabra que busquemos(ej: juan,1234567D),
-																	// si ponemos 0 sera todos los de la tabla
+								String nombreTabla = insertEmpleadoMT[2];
+								String dni = insertEmpleadoMT[3];
+								String datoDni = insertEmpleadoMT[4];
+								String nom = insertEmpleadoMT[5];
 								String datoNom = insertEmpleadoMT[6];
-								String apellido = insertEmpleadoMT[7];// si es el caso el orden, si no hay ponemos 0
-								String datoApellido = insertEmpleadoMT[8]; // el codigo recibido tiene que ser el mismo
-																			// que le hemos asignado
+								String apellido = insertEmpleadoMT[7];
+								String datoApellido = insertEmpleadoMT[8];
 								String nomempresa = insertEmpleadoMT[9];
-								String datoNomempresa = insertEmpleadoMT[10]; // Ser� el numero de tabla. (ej:
-																				// 1->empleados 2->users 3-jornada
-																				// 4-usertipe 5->empresa)
-								String departament = insertEmpleadoMT[11]; // sera la palabra que busquemos(ej:
-																			// juan,1234567D), si ponemos 0 sera todos
-																			// los de la tabla
-								String datoDepartament = insertEmpleadoMT[12];// si es el caso ser� la columna
-																				// (,dni,nom,etc), si no hay ponemos 0
-								String codicard = insertEmpleadoMT[13]; // sera la palabra que busquemos(ej:
-																		// juan,1234567D), si ponemos 0 sera todos los
-																		// de la tabla
+								String datoNomempresa = insertEmpleadoMT[10];
+								String departament = insertEmpleadoMT[11];
+								String datoDepartament = insertEmpleadoMT[12];
+								String codicard = insertEmpleadoMT[13];
 								String datoCodicard = insertEmpleadoMT[14];
-								String telephon = insertEmpleadoMT[15];// si es el caso el orden, si no hay ponemos 0
+								String telephon = insertEmpleadoMT[15];
 								String datoTelephon = insertEmpleadoMT[16];
-								String orden = insertEmpleadoMT[17];// si es el caso el orden, si no hay ponemos 0
+								String orden = insertEmpleadoMT[17];
 
 								System.out.println(
 										"____________________________________________________________________");
@@ -1230,42 +1209,26 @@ public class Cliente {
 									}
 								}
 							} else if (insertEmpleado[19].equals("0") || insertEmpleado[19].equals("1")) {
-								String codigoUserRecibido = insertEmpleado[0]; // el codigo recibido tiene que ser el
-																				// mismo que le hemos asignado
+								String codigoUserRecibido = insertEmpleado[0];
 								String crud = insertEmpleado[1];
-								String nombreTabla = insertEmpleado[2]; // Ser� el numero de tabla. (ej: 1->empleados
-																		// 2->users 3-jornada 4-usertipe 5->empresa)
-								String dni = insertEmpleado[3]; // sera la palabra que busquemos(ej: juan,1234567D), si
-																// ponemos 0 sera todos los de la tabla
-								String datoDni = insertEmpleado[4];// si es el caso ser� la columna (,dni,nom,etc), si
-																	// no hay ponemos 0
-								String nom = insertEmpleado[5]; // sera la palabra que busquemos(ej: juan,1234567D), si
-																// ponemos 0 sera todos los de la tabla
+								String nombreTabla = insertEmpleado[2];
+								String dni = insertEmpleado[3];
+								String datoDni = insertEmpleado[4];
+								String nom = insertEmpleado[5];
 								String datoNom = insertEmpleado[6];
-								String apellido = insertEmpleado[7];// si es el caso el orden, si no hay ponemos 0
-								String datoApellido = insertEmpleado[8]; // el codigo recibido tiene que ser el mismo
-																			// que le hemos asignado
+								String apellido = insertEmpleado[7];
+								String datoApellido = insertEmpleado[8];
 								String nomempresa = insertEmpleado[9];
-								String datoNomempresa = insertEmpleado[10]; // Ser� el numero de tabla. (ej:
-																			// 1->empleados 2->users 3-jornada
-																			// 4-usertipe 5->empresa)
-								String departament = insertEmpleado[11]; // sera la palabra que busquemos(ej:
-																			// juan,1234567D), si ponemos 0 sera todos
-																			// los de la tabla
-								String datoDepartament = insertEmpleado[12];// si es el caso ser� la columna
-																			// (,dni,nom,etc), si no hay ponemos 0
-								String codicard = insertEmpleado[13]; // sera la palabra que busquemos(ej:
-																		// juan,1234567D), si ponemos 0 sera todos los
-																		// de la tabla
+								String datoNomempresa = insertEmpleado[10];
+								String departament = insertEmpleado[11];
+								String datoDepartament = insertEmpleado[12];
+								String codicard = insertEmpleado[13];
 								String datoCodicard = insertEmpleado[14];
-								String mail = insertEmpleado[15];// si es el caso el orden, si no hay ponemos 0
-								String datoMail = insertEmpleado[16];// si es el caso ser� la columna (,dni,nom,etc), si
-																		// no hay ponemos 0
-								String telephon = insertEmpleado[17]; // sera la palabra que busquemos(ej:
-																		// juan,1234567D), si ponemos 0 sera todos los
-																		// de la tabla
+								String mail = insertEmpleado[15];
+								String datoMail = insertEmpleado[16];
+								String telephon = insertEmpleado[17];
 								String datoTelephon = insertEmpleado[18];
-								String orden = insertEmpleado[19];// si es el caso el orden, si no hay ponemos 0
+								String orden = insertEmpleado[19];
 
 								System.out.println(
 										"____________________________________________________________________");
@@ -1334,25 +1297,20 @@ public class Cliente {
 			socket.close();
 		} catch (UnknownHostException ex) {
 			System.out.println("____________________________________________________________________");
-			// Logger.getLogger(MainClient.class.getName()).log(Level.SEVERE, null, ex);
 			System.out.println(ex + "\n Problema con la clase desconocida");
 		} catch (IOException ex) {
 			System.out.println("____________________________________________________________________");
-			// Logger.getLogger(MainClient.class.getName()).log(Level.SEVERE, null, ex);
 			System.out.println(ex + "\n Problema con entrada y salida sockets");
 		}
 	}
 
-	public static int contarCaracteres(String cadena, char caracter) {// para contar los :
+	public static int contarCaracteres(String cadena, char caracter) {
 		int posicion, contador = 0;
-		// se busca la primera vez que aparece
 		posicion = cadena.indexOf(caracter);
-		while (posicion != -1) { // mientras se encuentre el caracter
-			contador++; // se cuenta
-			// se sigue buscando a partir de la posici�n siguiente a la encontrada
+		while (posicion != -1) {
+			contador++;
 			posicion = cadena.indexOf(caracter, posicion + 1);
 		}
 		return contador;
 	}
-
 }
