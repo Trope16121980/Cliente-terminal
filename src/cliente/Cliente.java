@@ -773,8 +773,8 @@ public class Cliente {
 
                                                 for (int i = 0; i < listaEmpresa.size(); i++) {
                                                     System.out.println("Nombre empresa: " + listaEmpresa.get(i).getNom()
-                                                            + "\n" + "Direcci�n: " + listaEmpresa.get(i).getAddress()
-                                                            + "\n" + "Telefono: " + listaEmpresa.get(i).getTelephon());
+                                                            + "\n" + "Direccion: " + listaEmpresa.get(i).getAddress() + "\n"
+                                                            + "Telefono: " + listaEmpresa.get(i).getTelephon());
                                                     System.out.println(
                                                             "____________________________________________________________________");
                                                 }
@@ -809,8 +809,90 @@ public class Cliente {
                                                 break;
                                         }
                                     }
+                                } else if (crud.equals("1")) {
+
+                                    if (nombreTabla.equals("3") && columna.equals("dni")) {
+                                        escriptor.write(palabra);
+                                        escriptor.newLine();
+                                        escriptor.flush();
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
+
+                                        perEnt = new ObjectInputStream(socket.getInputStream());
+                                        Object receivedData = perEnt.readObject();
+
+                                        if (receivedData instanceof List) {
+                                            List<?> dataList = (List<?>) receivedData;
+                                            System.out.println(("Jornada creada correctamente.\n"));
+                                            for (Object data : dataList) {
+                                                if (data instanceof Jornada) {
+                                                    Jornada jornada = (Jornada) data;
+                                                    System.out.println("Dni: " + jornada.getDni());
+                                                    System.out.println("Nombre: " + jornada.getNom());
+                                                    System.out.println("Apellido: " + jornada.getApellido());
+                                                    System.out.println("Codigo tarjeta: " + jornada.getCodicard());
+                                                    System.out.println("Hora entrada: " + jornada.getHoraentrada());
+                                                    System.out.println("Hora salida: " + jornada.getHorasalida());
+                                                    System.out.println("Total: " + jornada.getTotal());
+                                                    System.out.println("Fecha: " + jornada.getFecha());
+                                                    System.out.println(
+                                                            "____________________________________________________________________");
+                                                } else {
+                                                    System.out.println("Datos inesperados recibidos del servidor");
+
+                                                }
+                                                perEnt.getObjectInputFilter();
+                                            }
+                                        } else if (receivedData instanceof String) {
+                                            String errorMessage = (String) receivedData;
+                                            System.out.println(errorMessage);
+                                        } else {
+                                            System.out.println("Datos inesperados recibidos del servidor");
+                                        }
+
+                                    } else if (nombreTabla.equals("3") && columna.equals("codicard")) {
+                                        escriptor.write(palabra);
+                                        escriptor.newLine();
+                                        escriptor.flush();
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
+
+                                        perEnt = new ObjectInputStream(socket.getInputStream());
+                                        Object receivedData = perEnt.readObject();
+
+                                        if (receivedData instanceof List) {
+                                            List<?> dataList = (List<?>) receivedData;
+                                            System.out.println(("Jornada creada correctamente.\n"));
+                                            for (Object data : dataList) {
+                                                if (data instanceof Jornada) {
+                                                    Jornada jornada = (Jornada) data;
+                                                    System.out.println("Dni: " + jornada.getDni());
+                                                    System.out.println("Nombre: " + jornada.getNom());
+                                                    System.out.println("Apellido: " + jornada.getApellido());
+                                                    System.out.println("Codigo tarjeta: " + jornada.getCodicard());
+                                                    System.out.println("Hora entrada: " + jornada.getHoraentrada());
+                                                    System.out.println("Hora salida: " + jornada.getHorasalida());
+                                                    System.out.println("Total: " + jornada.getTotal());
+                                                    System.out.println("Fecha: " + jornada.getFecha());
+                                                    System.out.println(
+                                                            "____________________________________________________________________");
+                                                } else {
+                                                    System.out.println("Datos inesperados recibidos del servidor");
+
+                                                }
+                                                perEnt.getObjectInputFilter();
+                                            }
+                                        } else if (receivedData instanceof String) {
+                                            String errorMessage = (String) receivedData;
+                                            System.out.println(errorMessage);
+                                        } else {
+                                            System.out.println("Datos inesperados recibidos del servidor");
+                                        }
+
+                                    }
                                 }
-                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("dni") && NomApellido[5].equals("fecha")) {
+                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("dni")
+                                    && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
                                 String crud = NomApellido[1];
                                 String nombreTabla = NomApellido[2];
@@ -869,7 +951,8 @@ public class Cliente {
                                     System.out.println("Datos inesperados recibidos del servidor");
                                 }
 
-                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("nom") && NomApellido[5].equals("fecha")) {
+                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("nom")
+                                    && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
                                 String crud = NomApellido[1];
                                 String nombreTabla = NomApellido[2];
@@ -928,7 +1011,8 @@ public class Cliente {
                                     System.out.println("Datos inesperados recibidos del servidor");
                                 }
 
-                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("apellido") && NomApellido[5].equals("fecha")) {
+                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("apellido")
+                                    && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
                                 String crud = NomApellido[1];
                                 String nombreTabla = NomApellido[2];
@@ -987,7 +1071,8 @@ public class Cliente {
                                     System.out.println("Datos inesperados recibidos del servidor");
                                 }
 
-                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("codicard") && NomApellido[5].equals("fecha")) {
+                            } else if (NomApellido[2].equals("3") && NomApellido[3].equals("codicard")
+                                    && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
                                 String crud = NomApellido[1];
                                 String nombreTabla = NomApellido[2];
@@ -1046,7 +1131,8 @@ public class Cliente {
                                     System.out.println("Datos inesperados recibidos del servidor");
                                 }
 
-                            } else if (insertEmpresas[2].equals("3") && insertEmpresas[3].equals("nom") && insertEmpresas[5].equals("apellido") && insertEmpresas[7].equals("fecha")) {
+                            } else if (insertEmpresas[2].equals("3") && insertEmpresas[3].equals("nom")
+                                    && insertEmpresas[5].equals("apellido") && insertEmpresas[7].equals("fecha")) {
                                 String codigoUserRecibido = insertEmpresas[0];
                                 String crud = insertEmpresas[1];
                                 String nombreTabla = insertEmpresas[2];
@@ -1073,8 +1159,9 @@ public class Cliente {
                                 System.out.println(
                                         "____________________________________________________________________");
 
-                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + nom + "," + datoNom + "," + apellido + ","
-                                        + datoApellido + "," + fechas + "," + datoFecha + "," + orden;
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + nom + ","
+                                        + datoNom + "," + apellido + "," + datoApellido + "," + fechas + "," + datoFecha
+                                        + "," + orden;
 
                                 if (codigoUserRecibido.equals("")) {
                                     codigoUserRecibido = "0";
@@ -1202,445 +1289,319 @@ public class Cliente {
                                         } else {
                                             System.out.println("Datos inesperados recibidos del servidor");
                                         }
-                                    } else if (insertEmpresas[9].equals("0") || insertEmpresas[9].equals("1")) {
-                                        codigoUserRecibido = insertEmpresas[0];
-                                        crud = insertEmpresas[1];
-                                        nombreTabla = insertEmpresas[2];
-                                        nom = insertEmpresas[3];
-                                        datoNom = insertEmpresas[4];
-                                        String address = insertEmpresas[5];
-                                        String datoAddress = insertEmpresas[6];
-                                        String telephon = insertEmpresas[7];
-                                        String datoTelephon = insertEmpresas[8];
-                                        orden = insertEmpresas[9];
+                                    }
+                                }
+                            } else if (insertEmpresas[9].equals("0") || insertEmpresas[9].equals("1")) {
+                                String codigoUserRecibido = insertEmpresas[0];
+                                String crud = insertEmpresas[1];
+                                String nombreTabla = insertEmpresas[2];
+                                String nom = insertEmpresas[3];
+                                String datoNom = insertEmpresas[4];
+                                String address = insertEmpresas[5];
+                                String datoAddress = insertEmpresas[6];
+                                String telephon = insertEmpresas[7];
+                                String datoTelephon = insertEmpresas[8];
+                                String orden = insertEmpresas[9];
 
-                                        System.out.println(
-                                                "____________________________________________________________________");
-                                        System.out.println("codigoUserRecibido: " + codigoUserRecibido);
-                                        System.out.println("crud: " + crud);
-                                        System.out.println("nombreTabla: " + nombreTabla);
-                                        System.out.println("nom: " + nom);
-                                        System.out.println("datoNom: " + datoNom);
-                                        System.out.println("address: " + address);
-                                        System.out.println("datoApellido: " + datoAddress);
-                                        System.out.println("telephon: " + telephon);
-                                        System.out.println("datoTelephon: " + datoTelephon);
-                                        System.out.println("orden: " + orden);
-                                        System.out.println(
-                                                "____________________________________________________________________");
+                                System.out.println(
+                                        "____________________________________________________________________");
+                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("crud: " + crud);
+                                System.out.println("nombreTabla: " + nombreTabla);
+                                System.out.println("nom: " + nom);
+                                System.out.println("datoNom: " + datoNom);
+                                System.out.println("address: " + address);
+                                System.out.println("datoAddress: " + datoAddress);
+                                System.out.println("telephon: " + telephon);
+                                System.out.println("datoTelephon: " + datoTelephon);
+                                System.out.println("orden: " + orden);
+                                System.out.println(
+                                        "____________________________________________________________________");
 
-                                        palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + nom + ","
-                                                + datoNom + "," + address + "," + datoAddress + "," + telephon + ","
-                                                + datoTelephon + "," + orden;
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + nom + ","
+                                        + datoNom + "," + address + "," + datoAddress + "," + telephon + ","
+                                        + datoTelephon + "," + orden;
 
-                                        if (codigoUserRecibido.equals("")) {
-                                            codigoUserRecibido = "0";
+                                if (codigoUserRecibido.equals("")) {
+                                    codigoUserRecibido = "0";
+                                }
+
+                                if (crud.equals("1")) {
+                                    if (nombreTabla.equals("2") && nom.equals("nom") && address.equals("address")
+                                            && telephon.equals("telephon")) {
+
+                                        escriptor.write(palabra);
+                                        escriptor.newLine();
+                                        escriptor.flush();
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
+
+                                        perEnt = new ObjectInputStream(socket.getInputStream());
+                                        Object receivedData = perEnt.readObject();
+                                        if (receivedData instanceof List) {
+
+                                            System.out.println(("Empresa creada correctamente, sus datos son: \n"));
+                                            System.out.println("Nombre: " + datoNom + "\n" + "Adrress: " + datoAddress
+                                                    + "\n" + "Telefono: " + datoTelephon + "\n");
+                                            System.out.println(
+                                                    "____________________________________________________________________");
+
+                                            perEnt.getObjectInputFilter();
+                                        } else if (receivedData instanceof String) {
+                                            String errorMessage = (String) receivedData;
+                                            System.out.println(errorMessage);
+                                        } else {
+                                            System.out.println("Datos inesperados recibidos del servidor");
                                         }
+                                    }
+                                }
 
-                                        if (crud.equals("1")) {
-                                            if (nombreTabla.equals("2")) {
+                            } else if (insertUsuarios[11].equals("0") || insertUsuarios[11].equals("1")) {
+                                String codigoUserRecibido = insertUsuarios[0];
+                                String crud = insertUsuarios[1];
+                                String nombreTabla = insertUsuarios[2];
+                                String login = insertUsuarios[3];
+                                String datoLogin = insertUsuarios[4];
+                                String pass = insertUsuarios[5];
+                                String datoPass = insertUsuarios[6];
+                                String numTipe = insertUsuarios[7];
+                                String datoNumTipe = insertUsuarios[8];
+                                String dni = insertUsuarios[9];
+                                String datoDni = insertUsuarios[10];
+                                String orden = insertUsuarios[11];
 
-                                                escriptor.write(palabra);
-                                                escriptor.newLine();
-                                                escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
-                                                        + "\nenvia los datos siguiente: \n" + palabra);
+                                System.out.println(
+                                        "____________________________________________________________________");
+                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("crud: " + crud);
+                                System.out.println("nombreTabla: " + nombreTabla);
+                                System.out.println("login: " + login);
+                                System.out.println("datoLogin: " + datoLogin);
+                                System.out.println("pass: " + pass);
+                                System.out.println("datoPass: " + datoPass);
+                                System.out.println("numTipe: " + numTipe);
+                                System.out.println("datoNumTipe: " + datoNumTipe);
+                                System.out.println("dni: " + dni);
+                                System.out.println("datoDni: " + datoDni);
+                                System.out.println("orden: " + orden);
+                                System.out.println(
+                                        "____________________________________________________________________");
 
-                                                List<Empresa> insertEmpresa = new ArrayList<>();
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + login + ","
+                                        + datoLogin + "," + pass + "," + datoPass + "," + numTipe + "," + datoNumTipe
+                                        + "," + dni + "," + datoDni + "," + orden;
 
-                                                perEnt = new ObjectInputStream(socket.getInputStream());
-                                                insertEmpresa = (ArrayList) perEnt.readObject();
-                                                System.out
-                                                        .println(("Empleado creado correctamente, sus datos son: \n"));
-                                                System.out.println("Nombre: " + datoNom + "\n" + "Adrress: "
-                                                        + datoAddress + "\n" + "Telefono: " + datoTelephon + "\n");
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                perEnt.getObjectInputFilter();
-                                            }
+                                if (codigoUserRecibido.equals("")) {
+                                    codigoUserRecibido = "0";
+                                }
+
+                                if (crud.equals("1")) {
+                                    if (nombreTabla.equals("1") && login.equals("login") && pass.equals("pass")
+                                            && numTipe.equals("numtipe") && dni.equals("dni")) {
+
+                                        escriptor.write(palabra);
+                                        escriptor.newLine();
+                                        escriptor.flush();
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
+
+                                        perEnt = new ObjectInputStream(socket.getInputStream());
+                                        Object receivedData = perEnt.readObject();
+
+                                        if (receivedData instanceof List) {
+                                            System.out.println(("Usuario creado correctamente, sus datos son: \n"));
+                                            System.out.println("Login: " + datoLogin + "\n" + "Pass: " + datoPass + "\n"
+                                                    + "Num Tipe: " + datoNumTipe + "\n" + "Dni: " + datoDni + "\n");
+                                            System.out.println(
+                                                    "____________________________________________________________________");
+                                            perEnt.getObjectInputFilter();
+                                        } else if (receivedData instanceof String) {
+                                            String errorMessage = (String) receivedData;
+                                            System.out.println(errorMessage);
+                                        } else {
+                                            System.out.println("Datos inesperados recibidos del servidor");
                                         }
+                                    }
+                                }
+                            } else if (insertEmpleado[19].equals("0") && insertEmpleado[9].equals("nomempresa")
+                                    || insertEmpleado[19].equals("1") && insertEmpleado[9].equals("nomempresa")) {
+                                String codigoUserRecibido = insertEmpleado[0];
+                                String crud = insertEmpleado[1];
+                                String nombreTabla = insertEmpleado[2];
+                                String dni = insertEmpleado[3];
+                                String datoDni = insertEmpleado[4];
+                                String nom = insertEmpleado[5];
+                                String datoNom = insertEmpleado[6];
+                                String apellido = insertEmpleado[7];
+                                String datoApellido = insertEmpleado[8];
+                                String nomempresa = insertEmpleado[9];
+                                String datoNomempresa = insertEmpleado[10];
+                                String departament = insertEmpleado[11];
+                                String datoDepartament = insertEmpleado[12];
+                                String codicard = insertEmpleado[13];
+                                String datoCodicard = insertEmpleado[14];
+                                String mail = insertEmpleado[15];
+                                String datoMail = insertEmpleado[16];
+                                String telephon = insertEmpleado[17];
+                                String datoTelephon = insertEmpleado[18];
+                                String orden = insertEmpleado[19];
 
-                                    } else if (insertUsuarios[11].equals("0") || insertUsuarios[11].equals("1")) {
-                                        codigoUserRecibido = insertUsuarios[0];
-                                        crud = insertUsuarios[1];
-                                        nombreTabla = insertUsuarios[2];
-                                        String login = insertUsuarios[3];
-                                        String datoLogin = insertUsuarios[4];
-                                        String pass = insertUsuarios[5];
-                                        String datoPass = insertUsuarios[6];
-                                        String numTipe = insertUsuarios[7];
-                                        String datoNumTipe = insertUsuarios[8];
-                                        String dni = insertUsuarios[9];
-                                        String datoDni = insertUsuarios[10];
-                                        orden = insertUsuarios[11];
+                                System.out.println(
+                                        "____________________________________________________________________");
+                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("crud: " + crud);
+                                System.out.println("nombreTabla: " + nombreTabla);
+                                System.out.println("dni: " + dni);
+                                System.out.println("datoDni: " + datoDni);
+                                System.out.println("nom: " + nom);
+                                System.out.println("datoNom: " + datoNom);
+                                System.out.println("apellido: " + apellido);
+                                System.out.println("datoApellido: " + datoApellido);
+                                System.out.println("nomempresa: " + nomempresa);
+                                System.out.println("datoNomempresa: " + datoNomempresa);
+                                System.out.println("departament: " + departament);
+                                System.out.println("datoDepartament: " + datoDepartament);
+                                System.out.println("codicard: " + codicard);
+                                System.out.println("datoCodicard: " + datoCodicard);
+                                System.out.println("mail: " + mail);
+                                System.out.println("datoMail: " + datoMail);
+                                System.out.println("telephon: " + telephon);
+                                System.out.println("datoTelephon: " + datoTelephon);
+                                System.out.println("orden: " + orden);
+                                System.out.println(
+                                        "____________________________________________________________________");
 
-                                        System.out.println(
-                                                "____________________________________________________________________");
-                                        System.out.println("codigoUserRecibido: " + codigoUserRecibido);
-                                        System.out.println("crud: " + crud);
-                                        System.out.println("nombreTabla: " + nombreTabla);
-                                        System.out.println("login: " + login);
-                                        System.out.println("datoLogin: " + datoLogin);
-                                        System.out.println("pass: " + pass);
-                                        System.out.println("datoPass: " + datoPass);
-                                        System.out.println("numTipe: " + numTipe);
-                                        System.out.println("datoNumTipe: " + datoNumTipe);
-                                        System.out.println("dni: " + dni);
-                                        System.out.println("datoDni: " + datoDni);
-                                        System.out.println("orden: " + orden);
-                                        System.out.println(
-                                                "____________________________________________________________________");
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + ","
+                                        + datoDni + "," + nom + "," + datoNom + "," + apellido + "," + datoApellido
+                                        + "," + nomempresa + "," + datoNomempresa + "," + departament + ","
+                                        + datoDepartament + "," + codicard + "," + datoCodicard + "," + mail + ","
+                                        + datoMail + "," + telephon + "," + datoTelephon + "," + orden;
 
-                                        palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + login
-                                                + "," + datoLogin + "," + pass + "," + datoPass + "," + numTipe + ","
-                                                + datoNumTipe + "," + dni + "," + datoDni + "," + orden;
+                                if (codigoUserRecibido.equals("")) {
+                                    codigoUserRecibido = "0";
+                                }
 
-                                        if (codigoUserRecibido.equals("")) {
-                                            codigoUserRecibido = "0";
+                                if (crud.equals("1")) {
+                                    if (nombreTabla.equals("0") && dni.equals("dni") && nom.equals("nom")
+                                            && apellido.equals("apellido") && nomempresa.equals("nomempresa")
+                                            && departament.equals("departament") && codicard.equals("codicard")
+                                            && mail.equals("mail") && telephon.equals("telephon")) {
+
+                                        escriptor.write(palabra);
+                                        escriptor.newLine();
+                                        escriptor.flush();
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
+
+                                        perEnt = new ObjectInputStream(socket.getInputStream());
+                                        Object receivedData = perEnt.readObject();
+
+                                        if (receivedData instanceof List) {
+                                            System.out.println(("Empleado creado correctamente, sus datos son: \n"));
+                                            System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom + "\n"
+                                                    + "Apellido: " + datoApellido + "\n" + "Nombre empresa: "
+                                                    + datoNomempresa + "\n" + "Departamento: " + datoDepartament + "\n"
+                                                    + "Codigo tarjeta: " + datoCodicard + "\n" + "Mail: " + datoMail
+                                                    + "\n" + "Telefono: " + datoTelephon + "\n");
+                                            System.out.println(
+                                                    "____________________________________________________________________");
+                                            perEnt.getObjectInputFilter();
+                                        } else if (receivedData instanceof String) {
+                                            String errorMessage = (String) receivedData;
+                                            System.out.println(errorMessage);
+                                        } else {
+                                            System.out.println("Datos inesperados recibidos del servidor");
                                         }
+                                    }
+                                }
+                            } else if (insertEmpleado[19].equals("0") && insertEmpleado[9].equals("codicard")
+                                    || insertEmpleado[19].equals("1") && insertEmpleado[9].equals("codicard")) {
+                                String codigoUserRecibido = insertEmpleado[0];
+                                String crud = insertEmpleado[1];
+                                String nombreTabla = insertEmpleado[2];
+                                String dni = insertEmpleado[3];
+                                String datoDni = insertEmpleado[4];
+                                String nom = insertEmpleado[5];
+                                String datoNom = insertEmpleado[6];
+                                String apellido = insertEmpleado[7];
+                                String datoApellido = insertEmpleado[8];
+                                String codicard = insertEmpleado[9];
+                                String datoCodicard = insertEmpleado[10];
+                                String horaentrada = insertEmpleado[11];
+                                String datoHoraentrada = insertEmpleado[12];
+                                String horasalida = insertEmpleado[13];
+                                String datoHorasalida = insertEmpleado[14];
+                                String total = insertEmpleado[15];
+                                String datoTotal = insertEmpleado[16];
+                                String fechas = insertEmpleado[17];
+                                String datoFecha = insertEmpleado[18];
+                                String orden = insertEmpleado[19];
 
-                                        if (crud.equals("1")) {
-                                            if (nombreTabla.equals("1")) {
+                                System.out.println(
+                                        "____________________________________________________________________");
+                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("crud: " + crud);
+                                System.out.println("nombreTabla: " + nombreTabla);
+                                System.out.println("dni: " + dni);
+                                System.out.println("datoDni: " + datoDni);
+                                System.out.println("nom: " + nom);
+                                System.out.println("datoNom: " + datoNom);
+                                System.out.println("apellido: " + apellido);
+                                System.out.println("datoApellido: " + datoApellido);
+                                System.out.println("codicard: " + codicard);
+                                System.out.println("datoCodicard: " + datoCodicard);
+                                System.out.println("horaentrad: " + horaentrada);
+                                System.out.println("datoHoraentrada: " + datoHoraentrada);
+                                System.out.println("horasalida: " + horasalida);
+                                System.out.println("datoHorasalida: " + datoHorasalida);
+                                System.out.println("total: " + total);
+                                System.out.println("datoTotal: " + datoTotal);
+                                System.out.println("fecha: " + fechas);
+                                System.out.println("datoFecha: " + datoFecha);
+                                System.out.println("orden: " + orden);
+                                System.out.println(
+                                        "____________________________________________________________________");
 
-                                                escriptor.write(palabra);
-                                                escriptor.newLine();
-                                                escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
-                                                        + "\nenvia los datos siguiente: \n" + palabra);
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + ","
+                                        + datoDni + "," + nom + "," + datoNom + "," + apellido + "," + datoApellido
+                                        + "," + codicard + "," + datoCodicard + "," + horaentrada + ","
+                                        + datoHoraentrada + "," + horasalida + "," + datoHorasalida + "," + total + ","
+                                        + datoTotal + "," + fechas + "," + datoFecha + "," + orden;
 
-                                                List<Empresa> insertUser = new ArrayList<>();
+                                if (codigoUserRecibido.equals("")) {
+                                    codigoUserRecibido = "0";
+                                }
 
-                                                perEnt = new ObjectInputStream(socket.getInputStream());
-                                                insertUser = (ArrayList) perEnt.readObject();
-                                                System.out
-                                                        .println(("Empleado creado correctamente, sus datos son: \n"));
-                                                System.out.println("Login: " + datoLogin + "\n" + "Pass: " + datoPass
-                                                        + "\n" + "Num Tipe: " + datoNumTipe + "\n" + "Dni: " + datoDni
-                                                        + "\n");
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                perEnt.getObjectInputFilter();
-                                            }
-                                        }
-                                    } else if (insertEmpleadoMailTelf[15].equals("0")
-                                            || insertEmpleadoMailTelf[15].equals("1")) {
-                                        codigoUserRecibido = insertEmpleadoMailTelf[0];
-                                        crud = insertEmpleadoMailTelf[1];
-                                        nombreTabla = insertEmpleadoMailTelf[2];
-                                        String dni = insertEmpleadoMailTelf[3];
-                                        String datoDni = insertEmpleadoMailTelf[4];
-                                        nom = insertEmpleadoMailTelf[5];
-                                        datoNom = insertEmpleadoMailTelf[6];
-                                        apellido = insertEmpleadoMailTelf[7];
-                                        datoApellido = insertEmpleadoMailTelf[8];
-                                        String nomempresa = insertEmpleadoMailTelf[9];
-                                        String datoNomempresa = insertEmpleadoMailTelf[10];
-                                        String departament = insertEmpleadoMailTelf[11];
-                                        String datoDepartament = insertEmpleadoMailTelf[12];
-                                        String codicard = insertEmpleadoMailTelf[13];
-                                        String datoCodicard = insertEmpleadoMailTelf[14];
-                                        orden = insertEmpleadoMailTelf[15];
+                                if (crud.equals("1")) {
+                                    if (nombreTabla.equals("3") && dni.equals("dni") && nom.equals("nom")
+                                            && apellido.equals("apellido") && codicard.equals("codicard")
+                                            && horaentrada.equals("horaentrada") && horasalida.equals("horasalida")
+                                            && total.equals("total") && fechas.equals("fecha")) {
 
-                                        System.out.println(
-                                                "____________________________________________________________________");
-                                        System.out.println("codigoUserRecibido: " + codigoUserRecibido);
-                                        System.out.println("crud: " + crud);
-                                        System.out.println("nombreTabla: " + nombreTabla);
-                                        System.out.println("dni: " + dni);
-                                        System.out.println("datoDni: " + datoDni);
-                                        System.out.println("nom: " + nom);
-                                        System.out.println("datoNom: " + datoNom);
-                                        System.out.println("apellido: " + apellido);
-                                        System.out.println("datoApellido: " + datoApellido);
-                                        System.out.println("nomempresa: " + nomempresa);
-                                        System.out.println("datoNomempresa: " + datoNomempresa);
-                                        System.out.println("departament: " + departament);
-                                        System.out.println("datoDepartament: " + datoDepartament);
-                                        System.out.println("codicard: " + codicard);
-                                        System.out.println("datoCodicar: " + datoCodicard);
-                                        System.out.println("orden: " + orden);
-                                        System.out.println(
-                                                "____________________________________________________________________");
+                                        escriptor.write(palabra);
+                                        escriptor.newLine();
+                                        escriptor.flush();
+                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                + "\nenvia los datos siguiente: \n" + palabra);
 
-                                        palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + ","
-                                                + datoDni + "," + nom + "," + datoNom + "," + apellido + ","
-                                                + datoApellido + "," + nomempresa + "," + datoNomempresa + ","
-                                                + departament + "," + datoDepartament + "," + codicard + ","
-                                                + datoCodicard + "," + orden;
+                                        perEnt = new ObjectInputStream(socket.getInputStream());
+                                        Object receivedData = perEnt.readObject();
 
-                                        if (codigoUserRecibido.equals("")) {
-                                            codigoUserRecibido = "0";
-                                        }
-
-                                        if (crud.equals("1")) {
-                                            if (nombreTabla.equals("0")) {
-
-                                                escriptor.write(palabra);
-                                                escriptor.newLine();
-                                                escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
-                                                        + "\nenvia los datos siguiente: \n" + palabra);
-
-                                                List<Empleados> insertEmpleadosMailTelf = new ArrayList<>();
-
-                                                perEnt = new ObjectInputStream(socket.getInputStream());
-                                                insertEmpleadosMailTelf = (ArrayList) perEnt.readObject();
-                                                System.out
-                                                        .println(("Empleado creado correctamente, sus datos son: \n"));
-                                                System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom
-                                                        + "\n" + "Apellido: " + datoApellido + "\n" + "Nombre empresa: "
-                                                        + datoNomempresa + "\n" + "Departamento: " + datoDepartament
-                                                        + "\n" + "Codigo tarjeta: " + datoCodicard + "\n");
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                perEnt.getObjectInputFilter();
-                                            }
-                                        }
-                                    } else if (insertEmpleadoMT[17].equals("0") && insertEmpleadoMT[15].equals("mail")
-                                            || insertEmpleadoMT[17].equals("1")
-                                            && insertEmpleadoMT[15].equals("mail")) {
-
-                                        codigoUserRecibido = insertEmpleadoMT[0];
-                                        crud = insertEmpleadoMT[1];
-                                        nombreTabla = insertEmpleadoMT[2];
-                                        String dni = insertEmpleadoMT[3];
-                                        String datoDni = insertEmpleadoMT[4];
-                                        nom = insertEmpleadoMT[5];
-                                        datoNom = insertEmpleadoMT[6];
-                                        apellido = insertEmpleadoMT[7];
-                                        datoApellido = insertEmpleadoMT[8];
-                                        String nomempresa = insertEmpleadoMT[9];
-                                        String datoNomempresa = insertEmpleadoMT[10];
-                                        String departament = insertEmpleadoMT[11];
-                                        String datoDepartament = insertEmpleadoMT[12];
-                                        String codicard = insertEmpleadoMT[13];
-                                        String datoCodicard = insertEmpleadoMT[14];
-                                        String mail = insertEmpleadoMT[15];
-                                        String datoMail = insertEmpleadoMT[16];
-                                        orden = insertEmpleadoMT[17];
-
-                                        System.out.println(
-                                                "____________________________________________________________________");
-                                        System.out.println("codigoUserRecibido: " + codigoUserRecibido);
-                                        System.out.println("crud: " + crud);
-                                        System.out.println("nombreTabla: " + nombreTabla);
-                                        System.out.println("dni: " + dni);
-                                        System.out.println("datoDni: " + datoDni);
-                                        System.out.println("nom: " + nom);
-                                        System.out.println("datoNom: " + datoNom);
-                                        System.out.println("apellido: " + apellido);
-                                        System.out.println("datoApellido: " + datoApellido);
-                                        System.out.println("nomempresa: " + nomempresa);
-                                        System.out.println("datoNomempresa: " + datoNomempresa);
-                                        System.out.println("departament: " + departament);
-                                        System.out.println("datoDepartament: " + datoDepartament);
-                                        System.out.println("codicard: " + codicard);
-                                        System.out.println("datoCodicar: " + datoCodicard);
-                                        System.out.println("mail: " + mail);
-                                        System.out.println("datoMail: " + datoMail);
-                                        System.out.println("orden: " + orden);
-                                        System.out.println(
-                                                "____________________________________________________________________");
-
-                                        palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + ","
-                                                + datoDni + "," + nom + "," + datoNom + "," + apellido + ","
-                                                + datoApellido + "," + nomempresa + "," + datoNomempresa + ","
-                                                + departament + "," + datoDepartament + "," + codicard + ","
-                                                + datoCodicard + "," + mail + "," + datoMail + "," + orden;
-
-                                        if (codigoUserRecibido.equals("")) {
-                                            codigoUserRecibido = "0";
-                                        }
-
-                                        if (crud.equals("1")) {
-                                            if (nombreTabla.equals("0")) {
-
-                                                escriptor.write(palabra);
-                                                escriptor.newLine();
-                                                escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
-                                                        + "\nenvia los datos siguiente: \n" + palabra);
-
-                                                List<Empleados> insertEmpleadosMail = new ArrayList<>();
-
-                                                perEnt = new ObjectInputStream(socket.getInputStream());
-                                                insertEmpleadosMail = (ArrayList) perEnt.readObject();
-                                                System.out
-                                                        .println(("Empleado creado correctamente, sus datos son: \n"));
-                                                System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom
-                                                        + "\n" + "Apellido: " + datoApellido + "\n" + "Nombre empresa: "
-                                                        + datoNomempresa + "\n" + "Departamento: " + datoDepartament
-                                                        + "\n" + "Codigo tarjeta: " + datoCodicard + "\n" + "Mail: "
-                                                        + datoMail);
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                perEnt.getObjectInputFilter();
-                                            }
-                                        }
-                                    } else if (insertEmpleadoMT[17].equals("0")
-                                            && insertEmpleadoMT[15].equals("telephon")
-                                            || insertEmpleadoMT[17].equals("1")
-                                            && insertEmpleadoMT[15].equals("telephon")) {
-
-                                        codigoUserRecibido = insertEmpleadoMT[0];
-                                        crud = insertEmpleadoMT[1];
-                                        nombreTabla = insertEmpleadoMT[2];
-                                        String dni = insertEmpleadoMT[3];
-                                        String datoDni = insertEmpleadoMT[4];
-                                        nom = insertEmpleadoMT[5];
-                                        datoNom = insertEmpleadoMT[6];
-                                        apellido = insertEmpleadoMT[7];
-                                        datoApellido = insertEmpleadoMT[8];
-                                        String nomempresa = insertEmpleadoMT[9];
-                                        String datoNomempresa = insertEmpleadoMT[10];
-                                        String departament = insertEmpleadoMT[11];
-                                        String datoDepartament = insertEmpleadoMT[12];
-                                        String codicard = insertEmpleadoMT[13];
-                                        String datoCodicard = insertEmpleadoMT[14];
-                                        String telephon = insertEmpleadoMT[15];
-                                        String datoTelephon = insertEmpleadoMT[16];
-                                        orden = insertEmpleadoMT[17];
-
-                                        System.out.println(
-                                                "____________________________________________________________________");
-                                        System.out.println("codigoUserRecibido: " + codigoUserRecibido);
-                                        System.out.println("crud: " + crud);
-                                        System.out.println("nombreTabla: " + nombreTabla);
-                                        System.out.println("dni: " + dni);
-                                        System.out.println("datoDni: " + datoDni);
-                                        System.out.println("nom: " + nom);
-                                        System.out.println("datoNom: " + datoNom);
-                                        System.out.println("apellido: " + apellido);
-                                        System.out.println("datoApellido: " + datoApellido);
-                                        System.out.println("nomempresa: " + nomempresa);
-                                        System.out.println("datoNomempresa: " + datoNomempresa);
-                                        System.out.println("departament: " + departament);
-                                        System.out.println("datoDepartament: " + datoDepartament);
-                                        System.out.println("codicard: " + codicard);
-                                        System.out.println("datoCodicar: " + datoCodicard);
-                                        System.out.println("telephon: " + telephon);
-                                        System.out.println("datoTelephon: " + datoTelephon);
-                                        System.out.println("orden: " + orden);
-                                        System.out.println(
-                                                "____________________________________________________________________");
-
-                                        palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + ","
-                                                + datoDni + "," + nom + "," + datoNom + "," + apellido + ","
-                                                + datoApellido + "," + nomempresa + "," + datoNomempresa + ","
-                                                + departament + "," + datoDepartament + "," + codicard + ","
-                                                + datoCodicard + "," + telephon + "," + datoTelephon + "," + orden;
-
-                                        if (codigoUserRecibido.equals("")) {
-                                            codigoUserRecibido = "0";
-                                        }
-
-                                        if (crud.equals("1")) {
-                                            if (nombreTabla.equals("0")) {
-
-                                                escriptor.write(palabra);
-                                                escriptor.newLine();
-                                                escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
-                                                        + "\nenvia los datos siguiente: \n" + palabra);
-
-                                                List<Empleados> insertEmpleadosTelf = new ArrayList<>();
-
-                                                perEnt = new ObjectInputStream(socket.getInputStream());
-                                                insertEmpleadosTelf = (ArrayList) perEnt.readObject();
-                                                System.out
-                                                        .println(("Empleado creado correctamente, sus datos son: \n"));
-                                                System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom
-                                                        + "\n" + "Apellido: " + datoApellido + "\n" + "Nombre empresa: "
-                                                        + datoNomempresa + "\n" + "Departamento: " + datoDepartament
-                                                        + "\n" + "Codigo tarjeta: " + datoCodicard + "\n" + "Telephon: "
-                                                        + datoTelephon);
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                perEnt.getObjectInputFilter();
-                                            }
-                                        }
-                                    } else if (insertEmpleado[19].equals("0") || insertEmpleado[19].equals("1")) {
-                                        codigoUserRecibido = insertEmpleado[0];
-                                        crud = insertEmpleado[1];
-                                        nombreTabla = insertEmpleado[2];
-                                        String dni = insertEmpleado[3];
-                                        String datoDni = insertEmpleado[4];
-                                        nom = insertEmpleado[5];
-                                        datoNom = insertEmpleado[6];
-                                        apellido = insertEmpleado[7];
-                                        datoApellido = insertEmpleado[8];
-                                        String nomempresa = insertEmpleado[9];
-                                        String datoNomempresa = insertEmpleado[10];
-                                        String departament = insertEmpleado[11];
-                                        String datoDepartament = insertEmpleado[12];
-                                        String codicard = insertEmpleado[13];
-                                        String datoCodicard = insertEmpleado[14];
-                                        String mail = insertEmpleado[15];
-                                        String datoMail = insertEmpleado[16];
-                                        String telephon = insertEmpleado[17];
-                                        String datoTelephon = insertEmpleado[18];
-                                        orden = insertEmpleado[19];
-
-                                        System.out.println(
-                                                "____________________________________________________________________");
-                                        System.out.println("codigoUserRecibido: " + codigoUserRecibido);
-                                        System.out.println("crud: " + crud);
-                                        System.out.println("nombreTabla: " + nombreTabla);
-                                        System.out.println("dni: " + dni);
-                                        System.out.println("datoDni: " + datoDni);
-                                        System.out.println("nom: " + nom);
-                                        System.out.println("datoNom: " + datoNom);
-                                        System.out.println("apellido: " + apellido);
-                                        System.out.println("datoApellido: " + datoApellido);
-                                        System.out.println("nomempresa: " + nomempresa);
-                                        System.out.println("datoNomempresa: " + datoNomempresa);
-                                        System.out.println("departament: " + departament);
-                                        System.out.println("datoDepartament: " + datoDepartament);
-                                        System.out.println("codicard: " + codicard);
-                                        System.out.println("datoCodicar: " + datoCodicard);
-                                        System.out.println("mail: " + mail);
-                                        System.out.println("datoMail: " + datoMail);
-                                        System.out.println("telephon: " + telephon);
-                                        System.out.println("datoTelephon: " + datoTelephon);
-                                        System.out.println("orden: " + orden);
-                                        System.out.println(
-                                                "____________________________________________________________________");
-
-                                        palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + ","
-                                                + datoDni + "," + nom + "," + datoNom + "," + apellido + ","
-                                                + datoApellido + "," + nomempresa + "," + datoNomempresa + ","
-                                                + departament + "," + datoDepartament + "," + codicard + ","
-                                                + datoCodicard + "," + mail + "," + datoMail + "," + telephon + ","
-                                                + datoTelephon + "," + orden;
-
-                                        if (codigoUserRecibido.equals("")) {
-                                            codigoUserRecibido = "0";
-                                        }
-
-                                        if (crud.equals("1")) {
-                                            if (nombreTabla.equals("0")) {
-
-                                                escriptor.write(palabra);
-                                                escriptor.newLine();
-                                                escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
-                                                        + "\nenvia los datos siguiente: \n" + palabra);
-
-                                                List<Empleados> insertEmpleados = new ArrayList<>();
-
-                                                perEnt = new ObjectInputStream(socket.getInputStream());
-                                                insertEmpleados = (ArrayList) perEnt.readObject();
-                                                System.out
-                                                        .println(("Empleado creado correctamente, sus datos son: \n"));
-                                                System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom
-                                                        + "\n" + "Apellido: " + datoApellido + "\n" + "Nombre empresa: "
-                                                        + datoNomempresa + "\n" + "Departamento: " + datoDepartament
-                                                        + "\n" + "Codigo tarjeta: " + datoCodicard + "\n" + "Mail: "
-                                                        + datoMail + "\n" + "Telefono: " + datoTelephon + "\n");
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                perEnt.getObjectInputFilter();
-                                            }
+                                        if (receivedData instanceof List) {
+                                            System.out.println(("Empleado creado correctamente, sus datos son: \n"));
+                                            System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom + "\n"
+                                                    + "Apellido: " + datoApellido + "\n" + "Codigo Tarjeta: "
+                                                    + datoCodicard + "\n" + "Hora entrada: " + datoHoraentrada + "\n"
+                                                    + "Hora salida: " + datoHorasalida + "\n" + "Total: " + datoTotal
+                                                    + "\n" + "Fecha: " + datoFecha + "\n");
+                                            System.out.println(
+                                                    "____________________________________________________________________");
+                                            perEnt.getObjectInputFilter();
+                                        } else if (receivedData instanceof String) {
+                                            String errorMessage = (String) receivedData;
+                                            System.out.println(errorMessage);
+                                        } else {
+                                            System.out.println("Datos inesperados recibidos del servidor");
                                         }
                                     }
                                 }
