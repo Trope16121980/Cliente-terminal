@@ -1,21 +1,34 @@
-
 package modelo;
 
 import java.io.Serializable;
 
 /**
- *
- * @author Gustavo_Senorans
+ * @author Gustavo Senoráns Varela
+ * @version 1.4, 15/11/2023
+ * @since jdk 17
  */
-public class Users implements Serializable{
+public class Users implements Serializable {
+
+    /**
+     * @param serialVersionUID número de identificación de la clase Users
+     */
     private static final long serialVersionUID = 6529685098267757690L;
-    
+
     private String login;
     private String pass;
     private int numtipe;
     private String dni;
     private int codigo;
 
+    /**
+     * Clase Users
+     *
+     * @param login login del usuario
+     * @param pass el password del usuario
+     * @param numtipe el tipo de usuario admin / user
+     * @param dni el dni del empleado al que pertenece el usuario
+     * @param codigo el código que se genera para después del inicio de sesión
+     */
     public Users(String login, String pass, int numtipe, String dni, int codigo) {
         this.login = login;
         this.pass = pass;
@@ -24,6 +37,14 @@ public class Users implements Serializable{
         this.codigo = codigo;
     }
 
+    /**
+     * Clase Users
+     *
+     * @param login login del usuario
+     * @param pass el password del usuario
+     * @param numtipe el tipo de usuario admin / user
+     * @param dni el dni del empleado al que pertenece el usuario
+     */
     public Users(String login, String pass, int numtipe, String dni) {
         this.login = login;
         this.pass = pass;
@@ -31,10 +52,13 @@ public class Users implements Serializable{
         this.dni = dni;
     }
 
+    /**
+     * Clase Users
+     */
     public Users() {
-        
+
     }
-    
+
     public String getLogin() {
         return login;
     }
@@ -66,7 +90,7 @@ public class Users implements Serializable{
     public void setDni(String dni) {
         this.dni = dni;
     }
-    
+
     public int getCodigo() {
         return codigo;
     }

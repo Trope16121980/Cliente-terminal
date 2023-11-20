@@ -1,13 +1,17 @@
-
 package modelo;
 
 import java.io.Serializable;
 
 /**
- *
- * @author Gustavo_Senorans
+ * @author Gustavo Senoráns Varela
+ * @version 1.4, 15/11/2023
+ * @since jdk 17
  */
+
 public class Empleados implements Serializable {
+    /**
+     * @param serialVersionUID número de identificación de la clase Empleados
+     */
     private static final long serialVersionUID = 6529685098267757690L;
     
     private String dni;
@@ -19,6 +23,19 @@ public class Empleados implements Serializable {
     private String mail;
     private String telephon;
 
+    /**
+     * Clase empleados
+     * @param dni dni del empleado
+     * @param nom nombre del empleado
+     * @param apellido apellido del empleado
+     * @param nomempresa nombre de la empresa para la que trabaja el empleado
+     * y esta empresa ya tiene que existir en la BBDD HREntrada
+     * @param departament departamento en el que trabajará el empleado
+     * @param codicard codigo de tarjeta que utilizará el empleado
+     * para iniciar jornada
+     * @param mail mail del empleado
+     * @param telephon número de teléfono del empleado
+     */
     public Empleados(String dni, String nom, String apellido, String nomempresa, String departament, String codicard, String mail, String telephon) {
         this.dni = dni;
         this.nom = nom;

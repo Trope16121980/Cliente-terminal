@@ -1,13 +1,9 @@
 package cliente;
 
 /**
- *
- * @author Gustavo Señoráns Varela
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * @author Gustavo Senoráns Varela
+ * @version 1.4, 15/11/2023
+ * @since jdk 17
  */
 import modelo.*;
 import java.io.BufferedReader;
@@ -22,14 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author Gustavo_Senorans
- */
 public class Cliente {
 
     private static Scanner lectorPalabra;
 
+    /**
+     *
+     * @param args Argumentos de la línea de comandos (no se utilizan).
+     * @throws ClassNotFoundException Si ocurre un error al cargar una clase
+     * durante la serialización.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         boolean salir = false;
         try {
@@ -90,6 +89,10 @@ public class Cliente {
 
                         } else {
 
+                            /**
+                             * Controla la entrada de los datos envíados al
+                             * servidor
+                             */
                             String[] frase = new String[6];
                             frase = palabra.split(",");
 
@@ -114,6 +117,9 @@ public class Cliente {
                             String[] updateEmpleado = new String[22];
                             updateEmpleado = palabra.split(",");
 
+                            /**
+                             * Parte del control de errores
+                             */
                             if (!codigo.equals(frase[0]) || !codigo.equals(NomApellido[0])
                                     || !codigo.equals(insertEmpresas[0]) || !codigo.equals(insertUsuarios[0])
                                     || !codigo.equals(insertEmpleadoMailTelf[0]) || !codigo.equals(insertEmpleadoMT[0])
@@ -121,6 +127,15 @@ public class Cliente {
 
                                 System.out.println("\nEl codigo es erroneo");
 
+                                /**
+                                 * Entran la parate de CRUD dependiento del
+                                 * tamaño del array lo envía a un metodo u otro
+                                 * Crud = 0 (Select) Crud = 1 (Insert) Crud = 2
+                                 * (Update) Crud = 3 (Delete)(Aun sin contruir)
+                                 * y las tablas las defino de esta manera:
+                                 * Empleados = 0 Users = 1 Empresa = 2 Jornada =
+                                 * 3
+                                 */
                             } else if (frase[5].equals("0") || frase[5].equals("1")) {
                                 String codigoUserRecibido = frase[0];
                                 String crud = frase[1];
@@ -145,6 +160,9 @@ public class Cliente {
                                     codigoUserRecibido = "0";
                                 }
 
+                                /**
+                                 * Select empleado por dni
+                                 */
                                 if (crud.equals("0")) {
                                     if (nombreTabla.equals("0") && columna.equals("dni")) {
                                         escriptor.write(palabra);
@@ -177,6 +195,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select empleado por nombre
+                                         */
                                     } else if (nombreTabla.equals("0") && columna.equals("nom")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -208,7 +229,9 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
-
+                                        /**
+                                         * Select empleado por apellido
+                                         */
                                     } else if (nombreTabla.equals("0") && columna.equals("apellido")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -240,7 +263,9 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
-
+                                        /**
+                                         * Select empleado por nombre de empresa
+                                         */
                                     } else if (nombreTabla.equals("0") && columna.equals("nomempresa")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -273,6 +298,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select empleado por departamento
+                                         */
                                     } else if (nombreTabla.equals("0") && columna.equals("departament")) {
 
                                         escriptor.write(palabra);
@@ -306,6 +334,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select empleado por codigo de tarjeta
+                                         */
                                     } else if (nombreTabla.equals("0") && columna.equals("codicard")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -337,7 +368,9 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
-
+                                        /**
+                                         * Select empleado por mail
+                                         */
                                     } else if (nombreTabla.equals("0") && columna.equals("mail")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -369,7 +402,9 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
-
+                                        /**
+                                         * Select empleado por telefono
+                                         */
                                     } else if (nombreTabla.equals("0") && columna.equals("telephon")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -402,6 +437,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select usuario por dni
+                                         */
                                     } else if (nombreTabla.equals("1") && columna.equals("dni")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -428,6 +466,9 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
+                                        /**
+                                         * Select usuario por login
+                                         */
                                     } else if (nombreTabla.equals("1") && columna.equals("login")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -455,6 +496,10 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
+
+                                        /**
+                                         * Select usuario por tipo de usuario
+                                         */
                                     } else if (nombreTabla.equals("1") && columna.equals("numtipe")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -482,6 +527,9 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
+                                        /**
+                                         * Select empresa por nombre de empresa
+                                         */
                                     } else if (nombreTabla.equals("2") && columna.equals("nom")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -508,6 +556,9 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
+                                        /**
+                                         * Select empresa por direccion
+                                         */
                                     } else if (nombreTabla.equals("2") && columna.equals("address")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -535,6 +586,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select jornada por dni
+                                         */
                                     } else if (nombreTabla.equals("3") && columna.equals("dni")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -566,6 +620,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select jornada por nombre de empleado
+                                         */
                                     } else if (nombreTabla.equals("3") && columna.equals("nom")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -597,6 +654,10 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select jornada por apellido del
+                                         * empleado
+                                         */
                                     } else if (nombreTabla.equals("3") && columna.equals("apellido")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -628,6 +689,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select jornada por codigo de tarjeta
+                                         */
                                     } else if (nombreTabla.equals("3") && columna.equals("codicard")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -660,6 +724,10 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select jornada por la fecha de la
+                                         * jornada
+                                         */
                                     } else if (nombreTabla.equals("3") && columna.equals("fecha")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -691,8 +759,17 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Select la tabla completa y lo
+                                         * gestiono con un Switch por el numero
+                                         * que corresponde a cada una de las
+                                         * tablas
+                                         */
                                     } else if (!nombreTabla.equals(null) && columna.equals("0")) {
                                         switch (nombreTabla) {
+                                            /**
+                                             * Select tabla total empleados
+                                             */
                                             case "0":
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
@@ -720,6 +797,9 @@ public class Cliente {
                                                 }
                                                 perEnt.getObjectInputFilter();
                                                 break;
+                                            /**
+                                             * Select tabla total usuarios
+                                             */
                                             case "1":
 
                                                 escriptor.write(palabra);
@@ -744,6 +824,9 @@ public class Cliente {
                                                 perEnt.getObjectInputFilter();
                                                 break;
 
+                                            /**
+                                             * Select tabla total empresas
+                                             */
                                             case "2":
 
                                                 escriptor.write(palabra);
@@ -764,6 +847,9 @@ public class Cliente {
                                                 }
                                                 perEnt.getObjectInputFilter();
                                                 break;
+                                            /**
+                                             * Select tabla total joranda
+                                             */
                                             case "3":
 
                                                 escriptor.write(palabra);
@@ -792,6 +878,9 @@ public class Cliente {
                                     }
                                 } else if (crud.equals("1")) {
 
+                                    /**
+                                     * Insert jornada por dni
+                                     */
                                     if (nombreTabla.equals("3") && columna.equals("dni")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -831,6 +920,9 @@ public class Cliente {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
+                                        /**
+                                         * Insert jornada por codigo de tarjeta
+                                         */
                                     } else if (nombreTabla.equals("3") && columna.equals("codicard")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
@@ -872,6 +964,9 @@ public class Cliente {
 
                                     }
                                 }
+                                /**
+                                 * Select jornada por dni y fecha
+                                 */
                             } else if (NomApellido[2].equals("3") && NomApellido[3].equals("dni")
                                     && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
@@ -929,6 +1024,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Select jornada por nombre y fecha
+                                 */
                             } else if (NomApellido[2].equals("3") && NomApellido[3].equals("nom")
                                     && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
@@ -986,6 +1084,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Select jornada por apellido y fecha
+                                 */
                             } else if (NomApellido[2].equals("3") && NomApellido[3].equals("apellido")
                                     && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
@@ -1043,6 +1144,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Select jornada por codigo de tarjeta y fecha
+                                 */
                             } else if (NomApellido[2].equals("3") && NomApellido[3].equals("codicard")
                                     && NomApellido[5].equals("fecha")) {
                                 String codigoUserRecibido = NomApellido[0];
@@ -1100,6 +1204,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Select jornada por nombre, apellido y fecha
+                                 */
                             } else if (insertEmpresas[2].equals("3") && insertEmpresas[3].equals("nom")
                                     && insertEmpresas[5].equals("apellido") && insertEmpresas[7].equals("fecha")) {
                                 String codigoUserRecibido = insertEmpresas[0];
@@ -1162,6 +1269,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Select empleados por nombre y apellido
+                                 */
                             } else if (NomApellido[7].equals("0") || NomApellido[7].equals("1")) {
                                 String codigoUserRecibido = NomApellido[0];
                                 String crud = NomApellido[1];
@@ -1254,7 +1364,10 @@ public class Cliente {
                                         }
                                     }
                                 }
-                            } else if (insertEmpresas[3].equals("nom") && insertEmpresas[9].equals("0")|| insertEmpresas[3].equals("nom") && insertEmpresas[9].equals("1")) {
+                                /**
+                                 * Insert empresa
+                                 */
+                            } else if (insertEmpresas[3].equals("nom") && insertEmpresas[9].equals("0") || insertEmpresas[3].equals("nom") && insertEmpresas[9].equals("1")) {
                                 String codigoUserRecibido = insertEmpresas[0];
                                 String crud = insertEmpresas[1];
                                 String nombreTabla = insertEmpresas[2];
@@ -1316,6 +1429,9 @@ public class Cliente {
                                     }
                                 }
 
+                                /**
+                                 * Insert usuarios
+                                 */
                             } else if (insertUsuarios[3].equals("login") && insertUsuarios[11].equals("0")
                                     || insertUsuarios[3].equals("login") && insertUsuarios[11].equals("1")) {
                                 String codigoUserRecibido = insertUsuarios[0];
@@ -1382,6 +1498,9 @@ public class Cliente {
                                     }
                                 }
 
+                                /**
+                                 * Update empresa
+                                 */
                             } else if (NomApellido[1].equals("2") && NomApellido[2].equals("2") && NomApellido[3].equals("nomNuevo") && NomApellido[9].equals("nom")) {
 
                                 String codigoUserRecibido = NomApellido[0];
@@ -1441,6 +1560,10 @@ public class Cliente {
                                 } else {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
+
+                                /**
+                                 * Update user
+                                 */
                             } else if (insertEmpresas[1].equals("2") && insertEmpresas[2].equals("1") && insertEmpresas[3].equals("passNuevo")) {
 
                                 String codigoUserRecibido = insertEmpresas[0];
@@ -1497,6 +1620,10 @@ public class Cliente {
                                 } else {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
+
+                                /**
+                                 * Insert empleado
+                                 */
                             } else if (insertEmpleado[19].equals("0") && insertEmpleado[9].equals("nomempresa")
                                     || insertEmpleado[19].equals("1") && insertEmpleado[9].equals("nomempresa")) {
                                 String codigoUserRecibido = insertEmpleado[0];
@@ -1585,6 +1712,10 @@ public class Cliente {
                                         }
                                     }
                                 }
+
+                                /**
+                                 * Insert jornada
+                                 */
                             } else if (insertEmpleado[19].equals("0") && insertEmpleado[9].equals("codicard")
                                     || insertEmpleado[19].equals("1") && insertEmpleado[9].equals("codicard")) {
                                 String codigoUserRecibido = insertEmpleado[0];
@@ -1674,6 +1805,9 @@ public class Cliente {
                                     }
                                 }
 
+                                /**
+                                 * Update empleado
+                                 */
                             } else if (updateEmpleado[1].equals("2") && updateEmpleado[2].equals("0") && updateEmpleado[3].equals("dniNuevo")) {
 
                                 String codigoUserRecibido = updateEmpleado[0];
