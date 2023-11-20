@@ -43,7 +43,7 @@ public class Cliente {
             String codigo = "0";
             String mensajeServer = lector.readLine();
             System.out.println(mensajeServer);
-            System.out.println("Por favor introduce usuario y contraseña con este formato 'usuario:constraseña'");
+            System.out.println("\nPor favor introduce usuario y contraseña con este formato 'usuario:constraseña'");
             String palabra = lectorPalabra.nextLine();
             escriptor.write(palabra);
             escriptor.newLine();
@@ -56,16 +56,14 @@ public class Cliente {
             } else {
                 mensajeServer = lector.readLine();
                 if (mensajeServer.equalsIgnoreCase("-1")) {
-                    System.out.println("____________________________________________________________________");
-                    System.out.println("El login es erroneo");
+                    System.out.println("\nEl login es erroneo");
                     salir = true;
                     lector.close();
                     escriptor.close();
                     socket.close();
 
                 } else if (mensajeServer.equalsIgnoreCase("-2")) {
-                    System.out.println("____________________________________________________________________");
-                    System.out.println("El usuario ya esta conectado");
+                    System.out.println("\nEl usuario ya esta conectado");
                     salir = true;
                     lector.close();
                     escriptor.close();
@@ -76,7 +74,6 @@ public class Cliente {
                     System.out.println("El codigo es: " + codigo);
 
                     while (!salir) {
-                        System.out.println("____________________________________________________________________");
                         System.out.println("\nDebes solicitar al server una tabla: \n"
                                 + "codigo,crud,tabla,columna,palabra,orden\n"
                                 + "codigo,crud,tabla,columna,palabra,columna,palabra,orden");
@@ -105,9 +102,6 @@ public class Cliente {
                             String[] insertUsuarios = new String[12];
                             insertUsuarios = palabra.split(",");
 
-                            String[] updateUsers = new String[14];
-                            updateUsers = palabra.split(",");
-
                             String[] insertEmpleadoMailTelf = new String[16];
                             insertEmpleadoMailTelf = palabra.split(",");
 
@@ -125,7 +119,7 @@ public class Cliente {
                                     || !codigo.equals(insertEmpleadoMailTelf[0]) || !codigo.equals(insertEmpleadoMT[0])
                                     || !codigo.equals(insertEmpleado[0])) {
 
-                                System.out.println("El codigo es erroneo");
+                                System.out.println("\nEl codigo es erroneo");
 
                             } else if (frase[5].equals("0") || frase[5].equals("1")) {
                                 String codigoUserRecibido = frase[0];
@@ -135,9 +129,7 @@ public class Cliente {
                                 String palabraAbuscar = frase[4];
                                 String orden = frase[5];
 
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("columna: " + columna);
@@ -158,7 +150,7 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -167,7 +159,7 @@ public class Cliente {
                                         if (receivedData instanceof List) {
                                             List<Empleados> listaPersonasdni = (List<Empleados>) receivedData;
                                             for (Empleados empleado : listaPersonasdni) {
-                                                System.out.println("DNI: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDNI: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -182,14 +174,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("0") && columna.equals("nom")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -199,7 +191,7 @@ public class Cliente {
                                             List<Empleados> listaTotalEmpleadosNom = (List<Empleados>) receivedData;
 
                                             for (Empleados empleado : listaTotalEmpleadosNom) {
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -214,14 +206,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("0") && columna.equals("apellido")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -231,7 +223,7 @@ public class Cliente {
                                             List<Empleados> listaTotalEmpleadosApellido = (List<Empleados>) receivedData;
 
                                             for (Empleados empleado : listaTotalEmpleadosApellido) {
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -246,14 +238,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("0") && columna.equals("nomempresa")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -263,7 +255,7 @@ public class Cliente {
                                             List<Empleados> listaTotalEmpleadosNomEmpresa = (List<Empleados>) receivedData;
 
                                             for (Empleados empleado : listaTotalEmpleadosNomEmpresa) {
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -278,7 +270,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("0") && columna.equals("departament")) {
@@ -286,7 +278,7 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -296,7 +288,7 @@ public class Cliente {
                                             List<Empleados> listaTotalEmpleadosDepart = (List<Empleados>) receivedData;
 
                                             for (Empleados empleado : listaTotalEmpleadosDepart) {
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -311,14 +303,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("0") && columna.equals("codicard")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -328,7 +320,7 @@ public class Cliente {
                                             List<Empleados> listaTotalEmpleadosCodiCard = (List<Empleados>) receivedData;
                                             for (Empleados empleado : listaTotalEmpleadosCodiCard) {
                                                 String codicard = String.valueOf(empleado.getCodicard());
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -343,14 +335,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("0") && columna.equals("mail")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -360,7 +352,7 @@ public class Cliente {
                                             List<Empleados> listaTotalEmpleadosMail = (List<Empleados>) receivedData;
 
                                             for (Empleados empleado : listaTotalEmpleadosMail) {
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -375,14 +367,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("0") && columna.equals("telephon")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -392,7 +384,7 @@ public class Cliente {
                                             List<Empleados> listaTotalEmpleadosTelf = (List<Empleados>) receivedData;
                                             for (Empleados empleado : listaTotalEmpleadosTelf) {
                                                 String telephon = String.valueOf(empleado.getTelephon());
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -407,14 +399,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("1") && columna.equals("dni")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -423,7 +415,7 @@ public class Cliente {
                                         if (receivedData instanceof List) {
                                             List<Users> listaToUsersDni = (List<Users>) receivedData;
                                             for (Users user : listaToUsersDni) {
-                                                System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+                                                System.out.println("\nLogin: " + user.getLogin() + "\n" + "Password: "
                                                         + user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
                                                         + "\n" + "DNI: " + user.getDni());
                                                 System.out.println(
@@ -434,13 +426,13 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     } else if (nombreTabla.equals("1") && columna.equals("login")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -450,7 +442,7 @@ public class Cliente {
                                             List<Users> listaTotalUsersLogin = (List<Users>) receivedData;
 
                                             for (Users user : listaTotalUsersLogin) {
-                                                System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+                                                System.out.println("\nLogin: " + user.getLogin() + "\n" + "Password: "
                                                         + user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
                                                         + "\n" + "DNI: " + user.getDni());
                                                 System.out.println(
@@ -461,13 +453,13 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     } else if (nombreTabla.equals("1") && columna.equals("numtipe")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -477,7 +469,7 @@ public class Cliente {
                                             List<Users> listaTotalUsersTipe = (List<Users>) receivedData;
 
                                             for (Users user : listaTotalUsersTipe) {
-                                                System.out.println("Login: " + user.getLogin() + "\n" + "Password: "
+                                                System.out.println("\nLogin: " + user.getLogin() + "\n" + "Password: "
                                                         + user.getPass() + "\n" + "Tipo de user: " + user.getNumtipe()
                                                         + "\n" + "DNI: " + user.getDni());
                                                 System.out.println(
@@ -488,13 +480,13 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     } else if (nombreTabla.equals("2") && columna.equals("nom")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -503,9 +495,7 @@ public class Cliente {
                                         if (receivedData instanceof List) {
                                             List<Empresa> listaEmpresasNom = (List<Empresa>) receivedData;
                                             for (Empresa empresa : listaEmpresasNom) {
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                System.out.println("Nombre empresa: " + empresa.getNom() + "\n"
+                                                System.out.println("\nNombre empresa: " + empresa.getNom() + "\n"
                                                         + "Direccion: " + empresa.getAddress() + "\n" + "Telefono: "
                                                         + empresa.getTelephon());
                                                 System.out.println(
@@ -516,13 +506,13 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     } else if (nombreTabla.equals("2") && columna.equals("address")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -531,10 +521,8 @@ public class Cliente {
                                         if (receivedData instanceof List) {
                                             List<Empresa> listaEmpresasAddress = (List<Empresa>) receivedData;
                                             for (Empresa empresa : listaEmpresasAddress) {
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-                                                System.out.println("Nombre empresa: " + empresa.getNom() + "\n"
-                                                        + "Direcciï¿½n: " + empresa.getAddress() + "\n" + "Telefono: "
+                                                System.out.println("\nNombre empresa: " + empresa.getNom() + "\n"
+                                                        + "Direccion: " + empresa.getAddress() + "\n" + "Telefono: "
                                                         + empresa.getTelephon());
                                                 System.out.println(
                                                         "____________________________________________________________________");
@@ -544,14 +532,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("3") && columna.equals("dni")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -561,7 +549,7 @@ public class Cliente {
 
                                             List<Jornada> listaToJornadaDni = (List<Jornada>) receivedData;
                                             for (Jornada jornada : listaToJornadaDni) {
-                                                System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                         + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido()
                                                         + "\n" + "Codigo tarjeta: " + jornada.getCodicard() + "\n"
                                                         + "Hora entrada: " + jornada.getHoraentrada() + "\n"
@@ -575,14 +563,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("3") && columna.equals("nom")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -592,7 +580,7 @@ public class Cliente {
 
                                             List<Jornada> listaTotalJornadaNom = (List<Jornada>) receivedData;
                                             for (Jornada jornada : listaTotalJornadaNom) {
-                                                System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                         + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido()
                                                         + "\n" + "Codigo tarjeta: " + jornada.getCodicard() + "\n"
                                                         + "Hora entrada: " + jornada.getHoraentrada() + "\n"
@@ -606,14 +594,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("3") && columna.equals("apellido")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -623,7 +611,7 @@ public class Cliente {
 
                                             List<Jornada> listaTotalJornadaAapellido = (List<Jornada>) receivedData;
                                             for (Jornada jornada : listaTotalJornadaAapellido) {
-                                                System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                         + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido()
                                                         + "\n" + "Codigo tarjeta: " + jornada.getCodicard() + "\n"
                                                         + "Hora entrada: " + jornada.getHoraentrada() + "\n"
@@ -637,14 +625,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("3") && columna.equals("codicard")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -655,7 +643,7 @@ public class Cliente {
                                             List<Jornada> listaJornadaCodiCard = (List<Jornada>) receivedData;
                                             for (Jornada jornada : listaJornadaCodiCard) {
                                                 String codicard = String.valueOf(jornada.getCodicard());
-                                                System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                         + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido()
                                                         + "\n" + "Codigo tarjeta: " + jornada.getCodicard() + "\n"
                                                         + "Hora entrada: " + jornada.getHoraentrada() + "\n"
@@ -669,14 +657,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("3") && columna.equals("fecha")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -686,7 +674,7 @@ public class Cliente {
 
                                             List<Jornada> listaTotalJornadaFecha = (List<Jornada>) receivedData;
                                             for (Jornada jornada : listaTotalJornadaFecha) {
-                                                System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                         + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido()
                                                         + "\n" + "Codigo tarjeta: " + jornada.getCodicard() + "\n"
                                                         + "Hora entrada: " + jornada.getHoraentrada() + "\n"
@@ -700,7 +688,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (!nombreTabla.equals(null) && columna.equals("0")) {
@@ -709,18 +697,16 @@ public class Cliente {
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
                                                 escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                                 List<Empleados> listaPersonas = new ArrayList<>();
 
                                                 perEnt = new ObjectInputStream(socket.getInputStream());
                                                 listaPersonas = (ArrayList) perEnt.readObject();
-                                                System.out.println(
-                                                        "____________________________________________________________________");
 
                                                 for (int i = 0; i < listaPersonas.size(); i++) {
-                                                    System.out.println("Dni: " + listaPersonas.get(i).getDni() + "\n"
+                                                    System.out.println("\nDni: " + listaPersonas.get(i).getDni() + "\n"
                                                             + "Nombre: " + listaPersonas.get(i).getNom() + "\n"
                                                             + "Apellido: " + listaPersonas.get(i).getApellido() + "\n"
                                                             + "Nombre empresa: " + listaPersonas.get(i).getNomempresa()
@@ -740,18 +726,15 @@ public class Cliente {
                                                 escriptor.newLine();
                                                 escriptor.flush();
 
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                         + "\nenvia los datos siguiente: \n" + palabra);
                                                 List<Users> listaUsers = new ArrayList<>();
 
                                                 perEnt = new ObjectInputStream(socket.getInputStream());
                                                 listaUsers = (ArrayList) perEnt.readObject();
 
-                                                System.out.println(
-                                                        "____________________________________________________________________");
-
                                                 for (int i = 0; i < listaUsers.size(); i++) {
-                                                    System.out.println("Login: " + listaUsers.get(i).getLogin() + "\n"
+                                                    System.out.println("\nLogin: " + listaUsers.get(i).getLogin() + "\n"
                                                             + "Password: " + listaUsers.get(i).getPass() + "\n"
                                                             + "Tipo de user: " + listaUsers.get(i).getNumtipe() + "\n"
                                                             + "DNI: " + listaUsers.get(i).getDni());
@@ -766,16 +749,14 @@ public class Cliente {
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
                                                 escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                         + "\nenvia los datos siguiente: \n" + palabra);
                                                 List<Empresa> listaEmpresa = new ArrayList<>();
                                                 perEnt = new ObjectInputStream(socket.getInputStream());
                                                 listaEmpresa = (ArrayList) perEnt.readObject();
-                                                System.out.println(
-                                                        "____________________________________________________________________");
 
                                                 for (int i = 0; i < listaEmpresa.size(); i++) {
-                                                    System.out.println("Nombre empresa: " + listaEmpresa.get(i).getNom()
+                                                    System.out.println("\nNombre empresa: " + listaEmpresa.get(i).getNom()
                                                             + "\n" + "Direccion: " + listaEmpresa.get(i).getAddress() + "\n"
                                                             + "Telefono: " + listaEmpresa.get(i).getTelephon());
                                                     System.out.println(
@@ -788,16 +769,13 @@ public class Cliente {
                                                 escriptor.write(palabra);
                                                 escriptor.newLine();
                                                 escriptor.flush();
-                                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                         + "\nenvia los datos siguiente: \n" + palabra);
                                                 List<Jornada> listaJorandas = new ArrayList<>();
                                                 perEnt = new ObjectInputStream(socket.getInputStream());
                                                 listaJorandas = (ArrayList) perEnt.readObject();
-
-                                                System.out.println(
-                                                        "____________________________________________________________________");
                                                 for (int i = 0; i < listaJorandas.size(); i++) {
-                                                    System.out.println("Dni: " + listaJorandas.get(i).getDni() + "\n"
+                                                    System.out.println("\nDni: " + listaJorandas.get(i).getDni() + "\n"
                                                             + "Nombre: " + listaJorandas.get(i).getNom() + "\n"
                                                             + "Apellido: " + listaJorandas.get(i).getApellido() + "\n"
                                                             + "Codigo tarjeta: " + listaJorandas.get(i).getCodicard() + "\n"
@@ -818,7 +796,7 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -826,11 +804,11 @@ public class Cliente {
 
                                         if (receivedData instanceof List) {
                                             List<?> dataList = (List<?>) receivedData;
-                                            System.out.println(("Jornada creada correctamente.\n"));
+                                            System.out.println(("\nJornada creada correctamente.\n"));
                                             for (Object data : dataList) {
                                                 if (data instanceof Jornada) {
                                                     Jornada jornada = (Jornada) data;
-                                                    System.out.println("Dni: " + jornada.getDni());
+                                                    System.out.println("\nDni: " + jornada.getDni());
                                                     System.out.println("Nombre: " + jornada.getNom());
                                                     System.out.println("Apellido: " + jornada.getApellido());
                                                     System.out.println("Codigo tarjeta: " + jornada.getCodicard());
@@ -850,14 +828,14 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("3") && columna.equals("codicard")) {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -865,11 +843,11 @@ public class Cliente {
 
                                         if (receivedData instanceof List) {
                                             List<?> dataList = (List<?>) receivedData;
-                                            System.out.println(("Jornada creada correctamente.\n"));
+                                            System.out.println(("\nJornada creada correctamente.\n"));
                                             for (Object data : dataList) {
                                                 if (data instanceof Jornada) {
                                                     Jornada jornada = (Jornada) data;
-                                                    System.out.println("Dni: " + jornada.getDni());
+                                                    System.out.println("\nDni: " + jornada.getDni());
                                                     System.out.println("Nombre: " + jornada.getNom());
                                                     System.out.println("Apellido: " + jornada.getApellido());
                                                     System.out.println("Codigo tarjeta: " + jornada.getCodicard());
@@ -880,7 +858,7 @@ public class Cliente {
                                                     System.out.println(
                                                             "____________________________________________________________________");
                                                 } else {
-                                                    System.out.println("Datos inesperados recibidos del servidor");
+                                                    System.out.println("\nDatos inesperados recibidos del servidor");
 
                                                 }
                                                 perEnt.getObjectInputFilter();
@@ -889,7 +867,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     }
@@ -904,10 +882,7 @@ public class Cliente {
                                 String fechas = NomApellido[5];
                                 String datoFecha = NomApellido[6];
                                 String orden = NomApellido[7];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("nom: " + dni);
@@ -928,7 +903,7 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -937,7 +912,7 @@ public class Cliente {
                                 if (receivedData instanceof List) {
                                     List<Jornada> listaJornadaDniFecha = (List<Jornada>) receivedData;
                                     for (Jornada jornada : listaJornadaDniFecha) {
-                                        System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                        System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                 + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido() + "\n"
                                                 + "Codigo tarjeta: " + jornada.getCodicard() + "\n" + "Hora entrada: "
                                                 + jornada.getHoraentrada() + "\n" + "Hora salida: "
@@ -951,7 +926,7 @@ public class Cliente {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
                             } else if (NomApellido[2].equals("3") && NomApellido[3].equals("nom")
@@ -964,10 +939,7 @@ public class Cliente {
                                 String fechas = NomApellido[5];
                                 String datoFecha = NomApellido[6];
                                 String orden = NomApellido[7];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("nom: " + nom);
@@ -988,7 +960,7 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -997,7 +969,7 @@ public class Cliente {
                                 if (receivedData instanceof List) {
                                     List<Jornada> listaJornadaNomFecha = (List<Jornada>) receivedData;
                                     for (Jornada jornada : listaJornadaNomFecha) {
-                                        System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                        System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                 + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido() + "\n"
                                                 + "Codigo tarjeta: " + jornada.getCodicard() + "\n" + "Hora entrada: "
                                                 + jornada.getHoraentrada() + "\n" + "Hora salida: "
@@ -1011,7 +983,7 @@ public class Cliente {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
                             } else if (NomApellido[2].equals("3") && NomApellido[3].equals("apellido")
@@ -1024,10 +996,7 @@ public class Cliente {
                                 String fechas = NomApellido[5];
                                 String datoFecha = NomApellido[6];
                                 String orden = NomApellido[7];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("apellido: " + apellido);
@@ -1048,7 +1017,7 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -1057,7 +1026,7 @@ public class Cliente {
                                 if (receivedData instanceof List) {
                                     List<Jornada> listaJornadaNomFecha = (List<Jornada>) receivedData;
                                     for (Jornada jornada : listaJornadaNomFecha) {
-                                        System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                        System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                 + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido() + "\n"
                                                 + "Codigo tarjeta: " + jornada.getCodicard() + "\n" + "Hora entrada: "
                                                 + jornada.getHoraentrada() + "\n" + "Hora salida: "
@@ -1071,7 +1040,7 @@ public class Cliente {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
                             } else if (NomApellido[2].equals("3") && NomApellido[3].equals("codicard")
@@ -1084,10 +1053,7 @@ public class Cliente {
                                 String fechas = NomApellido[5];
                                 String datoFecha = NomApellido[6];
                                 String orden = NomApellido[7];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("codicard: " + codicard);
@@ -1108,7 +1074,7 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -1117,7 +1083,7 @@ public class Cliente {
                                 if (receivedData instanceof List) {
                                     List<Jornada> listaJornadaNomFecha = (List<Jornada>) receivedData;
                                     for (Jornada jornada : listaJornadaNomFecha) {
-                                        System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                        System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                 + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido() + "\n"
                                                 + "Codigo tarjeta: " + jornada.getCodicard() + "\n" + "Hora entrada: "
                                                 + jornada.getHoraentrada() + "\n" + "Hora salida: "
@@ -1131,7 +1097,7 @@ public class Cliente {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
                             } else if (insertEmpresas[2].equals("3") && insertEmpresas[3].equals("nom")
@@ -1146,10 +1112,7 @@ public class Cliente {
                                 String fechas = insertEmpresas[7];
                                 String datoFecha = insertEmpresas[8];
                                 String orden = insertEmpresas[9];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("nom: " + nom);
@@ -1173,7 +1136,7 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -1182,7 +1145,7 @@ public class Cliente {
                                 if (receivedData instanceof List) {
                                     List<Jornada> listaJornadaNomFecha = (List<Jornada>) receivedData;
                                     for (Jornada jornada : listaJornadaNomFecha) {
-                                        System.out.println("Dni: " + jornada.getDni() + "\n" + "Nombre: "
+                                        System.out.println("\nDni: " + jornada.getDni() + "\n" + "Nombre: "
                                                 + jornada.getNom() + "\n" + "Apellido: " + jornada.getApellido() + "\n"
                                                 + "Codigo tarjeta: " + jornada.getCodicard() + "\n" + "Hora entrada: "
                                                 + jornada.getHoraentrada() + "\n" + "Hora salida: "
@@ -1196,7 +1159,7 @@ public class Cliente {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
                             } else if (NomApellido[7].equals("0") || NomApellido[7].equals("1")) {
@@ -1208,10 +1171,7 @@ public class Cliente {
                                 String apellido = NomApellido[5];
                                 String datoApellido = NomApellido[6];
                                 String orden = NomApellido[7];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("nom: " + nom);
@@ -1234,7 +1194,7 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -1243,7 +1203,7 @@ public class Cliente {
                                         if (receivedData instanceof List) {
                                             List<Empleados> listaEmpleadosNomApellido = (List<Empleados>) receivedData;
                                             for (Empleados empleado : listaEmpleadosNomApellido) {
-                                                System.out.println("Dni: " + empleado.getDni() + "\n" + "Nombre: "
+                                                System.out.println("\nDni: " + empleado.getDni() + "\n" + "Nombre: "
                                                         + empleado.getNom() + "\n" + "Apellido: "
                                                         + empleado.getApellido() + "\n" + "Nombre empresa: "
                                                         + empleado.getNomempresa() + "\n" + "Departamento: "
@@ -1258,7 +1218,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
 
                                     } else if (nombreTabla.equals("3") && nom.equals("nom")
@@ -1266,7 +1226,7 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
@@ -1290,11 +1250,11 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     }
                                 }
-                            } else if (insertEmpresas[9].equals("0") || insertEmpresas[9].equals("1")) {
+                            } else if (insertEmpresas[3].equals("nom") && insertEmpresas[9].equals("0")|| insertEmpresas[3].equals("nom") && insertEmpresas[9].equals("1")) {
                                 String codigoUserRecibido = insertEmpresas[0];
                                 String crud = insertEmpresas[1];
                                 String nombreTabla = insertEmpresas[2];
@@ -1305,10 +1265,7 @@ public class Cliente {
                                 String telephon = insertEmpresas[7];
                                 String datoTelephon = insertEmpresas[8];
                                 String orden = insertEmpresas[9];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("nom: " + nom);
@@ -1336,14 +1293,14 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
                                         Object receivedData = perEnt.readObject();
                                         if (receivedData instanceof List) {
 
-                                            System.out.println(("Empresa creada correctamente, sus datos son: \n"));
+                                            System.out.println(("\nEmpresa creada correctamente, sus datos son: \n"));
                                             System.out.println("Nombre: " + datoNom + "\n" + "Adrress: " + datoAddress
                                                     + "\n" + "Telefono: " + datoTelephon + "\n");
                                             System.out.println(
@@ -1354,7 +1311,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     }
                                 }
@@ -1373,10 +1330,7 @@ public class Cliente {
                                 String dni = insertUsuarios[9];
                                 String datoDni = insertUsuarios[10];
                                 String orden = insertUsuarios[11];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("login: " + login);
@@ -1406,14 +1360,14 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
                                         Object receivedData = perEnt.readObject();
 
                                         if (receivedData instanceof List) {
-                                            System.out.println(("Usuario creado correctamente, sus datos son: \n"));
+                                            System.out.println(("\nUsuario creado correctamente, sus datos son: \n"));
                                             System.out.println("Login: " + datoLogin + "\n" + "Pass: " + datoPass + "\n"
                                                     + "Num Tipe: " + datoNumTipe + "\n" + "Dni: " + datoDni + "\n");
                                             System.out.println(
@@ -1423,7 +1377,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     }
                                 }
@@ -1442,10 +1396,7 @@ public class Cliente {
                                 String nom = NomApellido[9];
                                 String datoNom = NomApellido[10];
                                 String orden = NomApellido[11];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("nomNuevo: " + nomNuevo);
@@ -1470,7 +1421,7 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -1478,8 +1429,7 @@ public class Cliente {
 
                                 if (receivedData instanceof List) {
                                     List<Empresa> updateEmpresa = (List<Empresa>) receivedData;
-                                    System.out.println("Nombre de empresa modificado correctamente:");
-                                    System.out.println("____________________________________________________________________");
+                                    System.out.println("\nNombre de empresa modificado correctamente:");
                                     System.out.println("\nNombre empresa: " + datoNomnuevo + "\n"
                                             + "Direccion: " + datoAddressNuevo + "\n"
                                             + "Telefonon: " + datoTelephonNuevo);
@@ -1489,48 +1439,37 @@ public class Cliente {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
-                            } else if (updateUsers[1].equals("2") && updateUsers[2].equals("1") && updateUsers[3].equals("loginNuevo")) {
+                            } else if (insertEmpresas[1].equals("2") && insertEmpresas[2].equals("1") && insertEmpresas[3].equals("passNuevo")) {
 
-                                String codigoUserRecibido = updateUsers[0];
-                                String crud = updateUsers[1];
-                                String nombreTabla = updateUsers[2];
-                                String loginNuevo = updateUsers[3];
-                                String datoLoginNuevo = updateUsers[4];
-                                String passNuevo = updateUsers[5];
-                                String datoPassNuevo = updateUsers[6];
-                                String numtipeNuevo = updateUsers[7];
-                                String datoNumtipeNuevo = updateUsers[8];
-                                String dniNuevo = updateUsers[9];
-                                String datoDniNuevo = updateUsers[10];
-                                String dni = updateUsers[11];
-                                String datoDni = updateUsers[12];
-                                String orden = updateUsers[13];
-                                System.out.println("____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                String codigoUserRecibido = insertEmpresas[0];
+                                String crud = insertEmpresas[1];
+                                String nombreTabla = insertEmpresas[2];
+                                String passNuevo = insertEmpresas[3];
+                                String datoPassNuevo = insertEmpresas[4];
+                                String numtipeNuevo = insertEmpresas[5];
+                                String datoNumtipeNuevo = insertEmpresas[6];
+                                String login = insertEmpresas[7];
+                                String datoLogin = insertEmpresas[8];
+                                String orden = insertEmpresas[9];
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
-                                System.out.println("loginNuevo: " + loginNuevo);
-                                System.out.println("datoLoginNuevo: " + datoLoginNuevo);
                                 System.out.println("passNuevo: " + passNuevo);
                                 System.out.println("datoPassNuevo: " + datoPassNuevo);
                                 System.out.println("numtipeNuev: " + numtipeNuevo);
                                 System.out.println("datoNumtipeNuevo: " + datoNumtipeNuevo);
-                                System.out.println("dniNuevo: " + dniNuevo);
-                                System.out.println("datoDniNuevo: " + datoDniNuevo);
-                                System.out.println("dni: " + dni);
-                                System.out.println("datoDni: " + datoDni);
+                                System.out.println("login: " + login);
+                                System.out.println("datoLogin: " + datoLogin);
                                 System.out.println("orden: " + orden);
                                 System.out.println(
                                         "____________________________________________________________________");
 
                                 palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + ","
-                                        + loginNuevo + "," + datoLoginNuevo + ","
                                         + passNuevo + "," + datoPassNuevo + ","
                                         + numtipeNuevo + "," + datoNumtipeNuevo + ","
-                                        + dniNuevo + "," + datoDniNuevo + ","
-                                        + dni + "," + datoDni + "," + orden;
+                                        + login + "," + datoLogin + "," + orden;
 
                                 if (codigoUserRecibido.equals("")) {
                                     codigoUserRecibido = "0";
@@ -1539,26 +1478,24 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
                                 Object receivedData = perEnt.readObject();
 
                                 if (receivedData instanceof List) {
-                                    System.out.println("Empleado modificado correctamente:");
-                                    System.out.println("____________________________________________________________________");
-                                    System.out.println("Login: " + datoLoginNuevo);
+                                    System.out.println("\nUsuario modificado correctamente:");
+                                    System.out.println("\nLogin: " + datoLogin);
                                     System.out.println("Pass: " + datoPassNuevo);
                                     System.out.println("NunTipe: " + datoNumtipeNuevo);
-                                    System.out.println("Dni: " + datoDniNuevo);
                                     System.out.println("____________________________________________________________________");
                                     perEnt.getObjectInputFilter();
                                 } else if (receivedData instanceof String) {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
                             } else if (insertEmpleado[19].equals("0") && insertEmpleado[9].equals("nomempresa")
                                     || insertEmpleado[19].equals("1") && insertEmpleado[9].equals("nomempresa")) {
@@ -1582,10 +1519,7 @@ public class Cliente {
                                 String telephon = insertEmpleado[17];
                                 String datoTelephon = insertEmpleado[18];
                                 String orden = insertEmpleado[19];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("dni: " + dni);
@@ -1627,15 +1561,15 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
                                         Object receivedData = perEnt.readObject();
 
                                         if (receivedData instanceof List) {
-                                            System.out.println(("Empleado creado correctamente, sus datos son: \n"));
-                                            System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom + "\n"
+                                            System.out.println(("\nEmpleado creado correctamente, sus datos son: \n"));
+                                            System.out.println("\nDni: " + datoDni + "\n" + "Nombre: " + datoNom + "\n"
                                                     + "Apellido: " + datoApellido + "\n" + "Nombre empresa: "
                                                     + datoNomempresa + "\n" + "Departamento: " + datoDepartament + "\n"
                                                     + "Codigo tarjeta: " + datoCodicard + "\n" + "Mail: " + datoMail
@@ -1647,7 +1581,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     }
                                 }
@@ -1673,10 +1607,7 @@ public class Cliente {
                                 String fechas = insertEmpleado[17];
                                 String datoFecha = insertEmpleado[18];
                                 String orden = insertEmpleado[19];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("dni: " + dni);
@@ -1718,15 +1649,15 @@ public class Cliente {
                                         escriptor.write(palabra);
                                         escriptor.newLine();
                                         escriptor.flush();
-                                        System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                        System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                                 + "\nenvia los datos siguiente: \n" + palabra);
 
                                         perEnt = new ObjectInputStream(socket.getInputStream());
                                         Object receivedData = perEnt.readObject();
 
                                         if (receivedData instanceof List) {
-                                            System.out.println(("Empleado creado correctamente, sus datos son: \n"));
-                                            System.out.println("Dni: " + datoDni + "\n" + "Nombre: " + datoNom + "\n"
+                                            System.out.println(("\nEmpleado creado correctamente, sus datos son: \n"));
+                                            System.out.println("\nDni: " + datoDni + "\n" + "Nombre: " + datoNom + "\n"
                                                     + "Apellido: " + datoApellido + "\n" + "Codigo Tarjeta: "
                                                     + datoCodicard + "\n" + "Hora entrada: " + datoHoraentrada + "\n"
                                                     + "Hora salida: " + datoHorasalida + "\n" + "Total: " + datoTotal
@@ -1738,7 +1669,7 @@ public class Cliente {
                                             String errorMessage = (String) receivedData;
                                             System.out.println(errorMessage);
                                         } else {
-                                            System.out.println("Datos inesperados recibidos del servidor");
+                                            System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
                                     }
                                 }
@@ -1767,10 +1698,7 @@ public class Cliente {
                                 String dni = updateEmpleado[19];
                                 String datoDni = updateEmpleado[20];
                                 String orden = updateEmpleado[21];
-
-                                System.out.println(
-                                        "____________________________________________________________________");
-                                System.out.println("codigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
                                 System.out.println("crud: " + crud);
                                 System.out.println("nombreTabla: " + nombreTabla);
                                 System.out.println("dniNuevo: " + dniNuevo);
@@ -1813,7 +1741,7 @@ public class Cliente {
                                 escriptor.write(palabra);
                                 escriptor.newLine();
                                 escriptor.flush();
-                                System.out.println("El usuario con codigo: " + codigoUserRecibido
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
                                         + "\nenvia los datos siguiente: \n" + palabra);
 
                                 perEnt = new ObjectInputStream(socket.getInputStream());
@@ -1821,9 +1749,8 @@ public class Cliente {
 
                                 if (receivedData instanceof List) {
                                     List<Empresa> updateEmpresa = (List<Empresa>) receivedData;
-                                    System.out.println("Empleado modificado correctamente:");
-                                    System.out.println("____________________________________________________________________");
-                                    System.out.println("Dni: " + datoDniNuevo);
+                                    System.out.println("\nEmpleado modificado correctamente:");
+                                    System.out.println("\nDni: " + datoDniNuevo);
                                     System.out.println("Nombre: " + datoNomNuevo);
                                     System.out.println("Apellido: " + datoApellidoNuevo);
                                     System.out.println("Nombre empresa: " + datoNomempresaNuevo);
@@ -1837,7 +1764,7 @@ public class Cliente {
                                     String errorMessage = (String) receivedData;
                                     System.out.println(errorMessage);
                                 } else {
-                                    System.out.println("Datos inesperados recibidos del servidor");
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
                             }
 

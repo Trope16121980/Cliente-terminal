@@ -4,17 +4,29 @@ package modelo;
 import java.io.Serializable;
 
 /**
- *
- * @author Gustavo_Senorans
+ * @author Gustavo Senoráns Varela
+ * @version 1.4, 15/11/2023
+ * @since jdk 17
  */
+
 public class Empresa implements Serializable{
+     /**
+     * @param serialVersionUID número de identificación de la clase Empresa
+     */
     private static final long serialVersionUID = 6529685098267757690L;
     
     private String nom;
     private String address;
-    private int telephon;
+    private String telephon;
 
-    public Empresa(String nom, String address, int telephon) {
+    /**
+     * Clase Empresa
+     * @param nom nombre de la empresa
+     * @param address dirección de la empresa
+     * @param telephon número de teléfono de la empresa
+     */
+    
+    public Empresa(String nom, String address, String telephon) {
         this.nom = nom;
         this.address = address;
         this.telephon = telephon;
@@ -36,11 +48,11 @@ public class Empresa implements Serializable{
         this.address = address;
     }
 
-    public int getTelephon() {
+    public String getTelephon() {
         return telephon;
     }
 
-    public void setTelephon(int telephon) {
+    public void setTelephon(String telephon) {
         this.telephon = telephon;
     }
     
