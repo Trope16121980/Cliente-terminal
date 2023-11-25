@@ -127,6 +127,59 @@ public class Cliente {
 
                                 System.out.println("\nEl codigo es erroneo");
 
+                            } else if (frase[1].equals("2") && frase[2].equals("3")) {
+
+                                String codigoUserRecibido = frase[0];
+                                String crud = frase[1];
+                                String nombreTabla = frase[2];
+                                String dni = frase[3];
+                                String datoDni = frase[4];
+                                String orden = frase[5];
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("crud: " + crud);
+                                System.out.println("nombreTabla: " + nombreTabla);
+                                System.out.println("dni: " + dni);
+                                System.out.println("datoDni: " + datoDni);
+                                System.out.println("orden: " + orden);
+                                System.out.println(
+                                        "____________________________________________________________________");
+
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + "," + datoDni + "," + orden;
+
+                                if (codigoUserRecibido.equals("")) {
+                                    codigoUserRecibido = "0";
+                                }
+
+                                escriptor.write(palabra);
+                                escriptor.newLine();
+                                escriptor.flush();
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
+                                        + "\nenvia los datos siguiente: \n" + palabra);
+
+                                perEnt = new ObjectInputStream(socket.getInputStream());
+                                Object receivedData = perEnt.readObject();
+
+                                if (receivedData instanceof List) {
+                                    List<Jornada> updateJornada = (List<Jornada>) receivedData;
+                                    System.out.println("\nJornada modificado correctamente:");
+                                    Jornada jornada = updateJornada.get(0);
+                                    System.out.println("\nDni: " + datoDni);
+                                    System.out.println("Nombre: " + jornada.getNom()); // Reemplaza getNombre con el nombre del getter correspondiente
+                                    System.out.println("Apellido: " + jornada.getApellido()); // Reemplaza getApellido con el nombre del getter correspondiente
+                                    System.out.println("Hora entrada: " + jornada.getHoraentrada()); // Reemplaza getHoraEntrada con el nombre del getter correspondiente
+                                    System.out.println("Hora salida: " + jornada.getHorasalida()); // Reemplaza getHoraSalida con el nombre del getter correspondiente
+                                    System.out.println("Total: " + jornada.getTotal()); // Reemplaza getTotal con el nombre del getter correspondiente
+                                    System.out.println("Fecha: " + jornada.getFecha()); // Reemplaza getFecha con el nombre del getter correspondiente
+                                    System.out.println("Codigo tarjeta: " + jornada.getCodicard()); // Reemplaza getCodigoTarjeta con el nombre del getter correspondiente
+                                    System.out.println("____________________________________________________________________");
+                                    perEnt.getObjectInputFilter();
+                                } else if (receivedData instanceof String) {
+                                    String errorMessage = (String) receivedData;
+                                    System.out.println(errorMessage);
+                                } else {
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
+                                }
+
                                 /**
                                  * Entran la parate de CRUD dependiento del
                                  * tamaño del array lo envía a un metodo u otro
@@ -585,7 +638,6 @@ public class Cliente {
                                         } else {
                                             System.out.println("\nDatos inesperados recibidos del servidor");
                                         }
-
                                         /**
                                          * Select jornada por dni
                                          */
@@ -900,11 +952,11 @@ public class Cliente {
                                                     System.out.println("\nDni: " + jornada.getDni());
                                                     System.out.println("Nombre: " + jornada.getNom());
                                                     System.out.println("Apellido: " + jornada.getApellido());
-                                                    System.out.println("Codigo tarjeta: " + jornada.getCodicard());
                                                     System.out.println("Hora entrada: " + jornada.getHoraentrada());
                                                     System.out.println("Hora salida: " + jornada.getHorasalida());
                                                     System.out.println("Total: " + jornada.getTotal());
                                                     System.out.println("Fecha: " + jornada.getFecha());
+                                                    System.out.println("Codigo tarjeta: " + jornada.getCodicard());
                                                     System.out.println(
                                                             "____________________________________________________________________");
                                                 } else {
@@ -942,11 +994,11 @@ public class Cliente {
                                                     System.out.println("\nDni: " + jornada.getDni());
                                                     System.out.println("Nombre: " + jornada.getNom());
                                                     System.out.println("Apellido: " + jornada.getApellido());
-                                                    System.out.println("Codigo tarjeta: " + jornada.getCodicard());
                                                     System.out.println("Hora entrada: " + jornada.getHoraentrada());
                                                     System.out.println("Hora salida: " + jornada.getHorasalida());
                                                     System.out.println("Total: " + jornada.getTotal());
                                                     System.out.println("Fecha: " + jornada.getFecha());
+                                                    System.out.println("Codigo tarjeta: " + jornada.getCodicard());
                                                     System.out.println(
                                                             "____________________________________________________________________");
                                                 } else {
@@ -1804,7 +1856,6 @@ public class Cliente {
                                         }
                                     }
                                 }
-
                                 /**
                                  * Update empleado
                                  */

@@ -59,15 +59,15 @@ public class Jornada implements Serializable{
      * @param total tiempo total de la jornada laboral
      * @param fecha fecha de inicio de jornada del empleado
      */
-    public Jornada(String dni, String nom, String apellido, String codicard, String horaentrada, String horasalida, String total, String fecha) {
+    public Jornada(String dni, String nom, String apellido, String horaentrada, String horasalida, String total, String fecha, String codicard) {
         this.dni = dni;
         this.nom = nom;
         this.apellido = apellido;
-        this.codicard = codicard;
         this.horaentrada = horaentrada;
         this.horasalida = horasalida;
         this.total = total;
         this.fecha = fecha;
+        this.codicard = codicard;
     }
     
 
