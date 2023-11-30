@@ -127,6 +127,92 @@ public class Cliente {
 
                                 System.out.println("\nEl codigo es erroneo");
 
+                            } else if (NomApellido[1].equals("3") && NomApellido[2].equals("3") && NomApellido[3].equals("dni") && NomApellido[5].equals("fecha")) {
+
+                                String codigoUserRecibido = frase[0];
+                                String crud = frase[1];
+                                String nombreTabla = frase[2];
+                                String dni = frase[3];
+                                String datoDni = frase[4];
+                                String fecha = frase[5];
+                                String datoFecha = frase[6];
+                                String orden = frase[7];
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("crud: " + crud);
+                                System.out.println("nombreTabla: " + nombreTabla);
+                                System.out.println("dni: " + dni);
+                                System.out.println("datoDni: " + datoDni);
+                                System.out.println("fecha: " + fecha);
+                                System.out.println("datoFecha: " + datoFecha);
+                                System.out.println("orden: " + orden);
+                                System.out.println(
+                                        "____________________________________________________________________");
+
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + "," + datoDni + "," + fecha + "," + datoFecha + "," + orden;
+
+                                if (codigoUserRecibido.equals("")) {
+                                    codigoUserRecibido = "0";
+                                }
+
+                                escriptor.write(palabra);
+                                escriptor.newLine();
+                                escriptor.flush();
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
+                                        + "\nenvia los datos siguiente: \n" + palabra);
+
+                                perEnt = new ObjectInputStream(socket.getInputStream());
+                                Object receivedData = perEnt.readObject();
+
+                                if (receivedData instanceof List) {
+                                    perEnt.getObjectInputFilter();
+                                } else if (receivedData instanceof String) {
+                                    String errorMessage = (String) receivedData;
+                                    System.out.println(errorMessage);
+                                } else {
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
+                                }
+
+                            } else if (frase[1].equals("3") && frase[2].equals("1") && frase[3].equals("dni")) {
+
+                                String codigoUserRecibido = frase[0];
+                                String crud = frase[1];
+                                String nombreTabla = frase[2];
+                                String dni = frase[3];
+                                String datoDni = frase[4];
+                                String orden = frase[5];
+                                System.out.println("\ncodigoUserRecibido: " + codigoUserRecibido);
+                                System.out.println("crud: " + crud);
+                                System.out.println("nombreTabla: " + nombreTabla);
+                                System.out.println("dni: " + dni);
+                                System.out.println("datoDni: " + datoDni);
+                                System.out.println("orden: " + orden);
+                                System.out.println(
+                                        "____________________________________________________________________");
+
+                                palabra = codigoUserRecibido + "," + crud + "," + nombreTabla + "," + dni + "," + datoDni + "," + orden;
+
+                                if (codigoUserRecibido.equals("")) {
+                                    codigoUserRecibido = "0";
+                                }
+
+                                escriptor.write(palabra);
+                                escriptor.newLine();
+                                escriptor.flush();
+                                System.out.println("\nEl usuario con codigo: " + codigoUserRecibido
+                                        + "\nenvia los datos siguiente: \n" + palabra);
+
+                                perEnt = new ObjectInputStream(socket.getInputStream());
+                                Object receivedData = perEnt.readObject();
+
+                                if (receivedData instanceof List) {
+                                    perEnt.getObjectInputFilter();
+                                } else if (receivedData instanceof String) {
+                                    String errorMessage = (String) receivedData;
+                                    System.out.println(errorMessage);
+                                } else {
+                                    System.out.println("\nDatos inesperados recibidos del servidor");
+                                }
+
                             } else if (frase[1].equals("3") && frase[2].equals("0") && frase[3].equals("dni")) {
 
                                 String codigoUserRecibido = frase[0];
@@ -160,18 +246,6 @@ public class Cliente {
                                 Object receivedData = perEnt.readObject();
 
                                 if (receivedData instanceof List) {
-//                                    List<Empleados> deleteEmpleado = (List<Empleados>) receivedData;
-//                                    System.out.println("\nEmpleado eliminado correctamente:");
-//                                    Empleados empleados = deleteEmpleado.get(0);
-//                                    System.out.println("\nDni: " + datoDni);
-//                                    System.out.println("Nombre: " + empleados.getNom());
-//                                    System.out.println("Apellido: " + empleados.getApellido());
-//                                    System.out.println("Nombre emplresa: " + empleados.getNomempresa());
-//                                    System.out.println("Departamento: " + empleados.getDepartament());
-//                                    System.out.println("Codigo tarjeta: " + empleados.getCodicard());
-//                                    System.out.println("Mail: " + empleados.getMail());
-//                                    System.out.println("Telefonon: " + empleados.getTelephon());
-//                                    System.out.println("____________________________________________________________________");
                                     perEnt.getObjectInputFilter();
                                 } else if (receivedData instanceof String) {
                                     String errorMessage = (String) receivedData;
