@@ -160,18 +160,18 @@ public class Cliente {
                                 Object receivedData = perEnt.readObject();
 
                                 if (receivedData instanceof List) {
-                                    List<Empleados> deleteEmpleado = (List<Empleados>) receivedData;
-                                    System.out.println("\nEmpleado modificado correctamente:");
-                                    Empleados empleados = deleteEmpleado.get(0);
-                                    System.out.println("\nDni: " + datoDni);
-                                    System.out.println("Nombre: " + empleados.getNom());
-                                    System.out.println("Apellido: " + empleados.getApellido());
-                                    System.out.println("Nombre emplresa: " + empleados.getNomempresa());
-                                    System.out.println("Departamento: " + empleados.getDepartament());
-                                    System.out.println("Codigo tarjeta: " + empleados.getCodicard());
-                                    System.out.println("Mail: " + empleados.getMail());
-                                    System.out.println("Telefonon: " + empleados.getTelephon());
-                                    System.out.println("____________________________________________________________________");
+//                                    List<Empleados> deleteEmpleado = (List<Empleados>) receivedData;
+//                                    System.out.println("\nEmpleado eliminado correctamente:");
+//                                    Empleados empleados = deleteEmpleado.get(0);
+//                                    System.out.println("\nDni: " + datoDni);
+//                                    System.out.println("Nombre: " + empleados.getNom());
+//                                    System.out.println("Apellido: " + empleados.getApellido());
+//                                    System.out.println("Nombre emplresa: " + empleados.getNomempresa());
+//                                    System.out.println("Departamento: " + empleados.getDepartament());
+//                                    System.out.println("Codigo tarjeta: " + empleados.getCodicard());
+//                                    System.out.println("Mail: " + empleados.getMail());
+//                                    System.out.println("Telefonon: " + empleados.getTelephon());
+//                                    System.out.println("____________________________________________________________________");
                                     perEnt.getObjectInputFilter();
                                 } else if (receivedData instanceof String) {
                                     String errorMessage = (String) receivedData;
@@ -214,7 +214,7 @@ public class Cliente {
 
                                 if (receivedData instanceof List) {
                                     List<Empresa> deleteEmpresa = (List<Empresa>) receivedData;
-                                    System.out.println("\nJornada modificada correctamente:");
+                                    System.out.println("\nEmpresa elimininada correctamente:");
                                     Empresa empresa = deleteEmpresa.get(0);
                                     System.out.println("\nNombre: " + datoNom);
                                     System.out.println("Direccion: " + empresa.getAddress());
