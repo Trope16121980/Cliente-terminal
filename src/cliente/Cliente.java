@@ -127,6 +127,10 @@ public class Cliente {
 
                                 System.out.println("\nEl codigo es erroneo");
 
+                                /**
+                                 * Delete jornada por dni de empleado y fecha de
+                                 * jornada
+                                 */
                             } else if (NomApellido[1].equals("3") && NomApellido[2].equals("3")
                                     && NomApellido[3].equals("dni") && NomApellido[5].equals("fecha")) {
 
@@ -173,6 +177,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Delete usuario por dni de usuario
+                                 */
                             } else if (frase[1].equals("3") && frase[2].equals("1") && frase[3].equals("dni")) {
 
                                 String codigoUserRecibido = frase[0];
@@ -214,6 +221,10 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
                                 perEnt.getObjectInputFilter();
+
+                                /**
+                                 * Delete empleado por dni
+                                 */
                             } else if (frase[1].equals("3") && frase[2].equals("0") && frase[3].equals("dni")) {
 
                                 String codigoUserRecibido = frase[0];
@@ -255,6 +266,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Delete empresa por nombre de empresa
+                                 */
                             } else if (frase[1].equals("3") && frase[2].equals("2") && frase[3].equals("nom")) {
 
                                 String codigoUserRecibido = frase[0];
@@ -303,6 +317,9 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Update jornada por dni de empleado
+                                 */
                             } else if (frase[1].equals("2") && frase[2].equals("3") && frase[3].equals("dni")) {
 
                                 String codigoUserRecibido = frase[0];
@@ -356,6 +373,10 @@ public class Cliente {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
 
+                                /**
+                                 * Update de jornada por codigo de tarjeta del
+                                 * empleado
+                                 */
                             } else if (frase[1].equals("2") && frase[2].equals("3") && frase[3].equals("codicard")) {
 
                                 String codigoUserRecibido = frase[0];
