@@ -127,7 +127,8 @@ public class Cliente {
 
                                 System.out.println("\nEl codigo es erroneo");
 
-                            } else if (NomApellido[1].equals("3") && NomApellido[2].equals("3") && NomApellido[3].equals("dni") && NomApellido[5].equals("fecha")) {
+                            } else if (NomApellido[1].equals("3") && NomApellido[2].equals("3")
+                                    && NomApellido[3].equals("dni") && NomApellido[5].equals("fecha")) {
 
                                 String codigoUserRecibido = frase[0];
                                 String crud = frase[1];
@@ -212,7 +213,7 @@ public class Cliente {
                                 } else {
                                     System.out.println("\nDatos inesperados recibidos del servidor");
                                 }
-
+                                perEnt.getObjectInputFilter();
                             } else if (frase[1].equals("3") && frase[2].equals("0") && frase[3].equals("dni")) {
 
                                 String codigoUserRecibido = frase[0];
