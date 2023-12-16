@@ -17,6 +17,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.net.ssl.SSLSocketFactory;
 
 public class Cliente {
 
@@ -32,8 +33,13 @@ public class Cliente {
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         boolean salir = false;
         try {
-            // IMPLEMENTA
-            Socket socket = new Socket("192.168.56.1", 8888);
+            System.setProperty("javax.net.ssl.trustStore", "certificados/client/clientTrustedCerts.jks");
+            System.setProperty("javax.net.ssl.trustStorePassword", "254535fd32_A");
+            //Creamos el socket
+            SSLSocketFactory clientFactory = (SSLSocketFactory) SSLSocketFactory
+                  .getDefault();
+            Socket socket = clientFactory.createSocket("192.168.56.1",8888);
+            
             lectorPalabra = new Scanner(System.in);
             BufferedReader lector = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedWriter escriptor = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
